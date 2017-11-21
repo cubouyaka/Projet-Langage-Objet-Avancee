@@ -1,0 +1,8 @@
+#include "Item.hpp"
+
+int main(){
+  Item a('T',10,"aaa");
+  Item b('T',9);
+  Item c('C');
+  Item d();
+}
