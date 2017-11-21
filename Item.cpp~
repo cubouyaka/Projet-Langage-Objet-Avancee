@@ -1,4 +1,0 @@
-#include "Item.hpp"
-
-Item::Item(const char s,const int p, const char * n):symbole(s),pods(p),name(n){}
-

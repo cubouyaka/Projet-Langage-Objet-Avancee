@@ -1,9 +1,0 @@
-class Item {
-private:
-  const char symbole;
-  const int pods;
-  const char * name;
-
-public:
-  Item(const char _symbole = '?', const int _pods = 1, const char * _name = "item_unknown");
-}
