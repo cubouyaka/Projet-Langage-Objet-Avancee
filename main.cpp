@@ -1,5 +1,7 @@
-#include "Item.hpp"
+#include "Monster.hpp"
 #include <iostream>
+
+using namespace std;
 
 
 int main(){
@@ -8,8 +10,13 @@ int main(){
   Potion p;
   Potion pp(10);
   const Weapon w;
-  std::cout << w.getDurability() << std::endl;
+  const Monster m,n;
+  Case cas;
+  m.print();
+  cas.print();
+  cout << m.getItem().getSymbole() << endl;
+  cout << w.getDurability() << endl;
   while(w.setDurability())
-    std::cout << w.getDurability() << std::endl;
-  std::cout << d.getName() << std::endl;
+    cout << w.getDurability() << endl;
+  cout << d.getName() << endl;
 }

@@ -1,8 +1,8 @@
 #include "Item.hpp"
 
-Item::Item(const char s, const char * n,const int p):symbole(s),name(n),pods(p){}
+Item::Item(const char s, const char * n,const int p):Case(s),name(n),pods(p){}
 
-const char Item::getSymbole() const{ return symbole; }
+//const char Item::getSymbole() const{ return symbole; }
 const char * Item::getName() const{ return name; }
 const int Item::getPods() const{ return pods; }
 
