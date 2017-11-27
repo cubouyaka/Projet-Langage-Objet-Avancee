@@ -14,7 +14,7 @@ int main(){
   Case cas;
   m.print();
   cas.print();
-  cout << m.getItem().getSymbole() << endl;
+  //cout << m.getItem().getSymbole() << endl;
   cout << w.getDurability() << endl;
   while(w.setDurability())
     cout << w.getDurability() << endl;
