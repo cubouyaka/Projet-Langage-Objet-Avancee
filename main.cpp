@@ -13,7 +13,7 @@ int main(){
   const Monster m,n;
   Case cas;
   m.print();
-  cas.print();
+  p.print();
   //cout << m.getItem().getSymbole() << endl;
   cout << w.getDurability() << endl;
   while(w.setDurability())

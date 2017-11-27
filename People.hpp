@@ -1,4 +1,7 @@
-#include "Item.hpp" 
+#ifndef PEOPLE_H
+#define PEOPLE_H
+#include "Weapon.hpp" 
+#include "Potion.hpp"
 
 #define MAX_LIFE 100
 #define DEFAULT_WEAPON Weapon(5,-1,1,'?',"Hands",0)
@@ -25,3 +28,5 @@ public :
   void drinkPotion(const ResiDownPotion &p);
   void die(); //destruct the people and drop object if needs
 };
+
+#endif

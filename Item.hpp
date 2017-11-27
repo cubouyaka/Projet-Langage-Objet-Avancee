@@ -1,3 +1,5 @@
+#ifndef ITEM_H
+#define ITEM_H
 #include "Case.hpp"
 
 class Item : public Case {
@@ -15,4 +17,5 @@ public:
 
 };
 
+#endif
 

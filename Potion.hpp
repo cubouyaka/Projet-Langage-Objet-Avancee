@@ -1,3 +1,5 @@
+#ifndef POTION_H
+#define POTION_H
 #include "Item.hpp"
 
 #define DEFAULT_POTION 10
@@ -11,6 +13,7 @@ public:
 	 const char * n = "Unknown Potion");
 
   const int getEffect() const;
+  void print() const;
 };
 
 class HealingPotion : public Potion {
@@ -21,6 +24,7 @@ public:
 class Posion : public Potion {
 public:
   Posion(const int e = DEFAULT_POTION);
+  void print() const;
 };
 
 class ResiUpPotion : public Potion {
@@ -31,4 +35,7 @@ public:
 class ResiDownPotion : public Potion {
 public:
   ResiDownPotion(const int e = DEFAULT_POTION);
+  void print() const;
 };
+
+#endif

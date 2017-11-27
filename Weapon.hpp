@@ -1,3 +1,5 @@
+#ifndef WEAPON_H
+#define WEAPON_H
 #include "Item.hpp"
 
 #define DEFAULT_WEAPON_A 10
@@ -19,3 +21,5 @@ public:
   int getDurability() const;
   bool setDurability() const;
 };
+
+#endif

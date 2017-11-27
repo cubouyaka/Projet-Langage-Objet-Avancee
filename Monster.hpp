@@ -1,3 +1,5 @@
+#ifndef MONSTER_H
+#define MONSTER_H
 #include "People.hpp"
 
 //TODO END DEF ect..
@@ -8,3 +10,5 @@ public:
 	  const Weapon w = DEFAULT_WEAPON, const Item i = Item());
   void print() const;
 };
+
+#endif
