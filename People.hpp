@@ -3,7 +3,8 @@
 #include "Weapon.hpp" 
 #include "Potion.hpp"
 
-#define MAX_LIFE 100
+#define MAX_LIFE 500
+#define MAX_LIFE_PLAYER 100
 #define DEFAULT_WEAPON Weapon(5,-1,1,'?',"Hands",0)
 
 class People : public Case {
@@ -15,7 +16,7 @@ protected:
   const Item item;
 
 public :
-  People(int l = MAX_LIFE, double r = 1, const int s = 1,
+  People(const char s = '!', int l = MAX_LIFE, double r = 1, const int S = 1,
 	 Weapon w = DEFAULT_WEAPON, const Item i = Item());
 
   const Weapon getWeapon() const;

@@ -1,7 +1,7 @@
 #include "People.hpp"
 
-People::People(int l, double r, const int s, Weapon w, const Item i):
-  Case('M'), life(l), resi(r), size(s), weapon(w) , item(i){ }
+People::People(const char s, int l, double r, const int S, Weapon w,const Item i)
+  : Case(s), life(l), resi(r), size(S), weapon(w), item(i){ }
 
 const Weapon People::getWeapon() const { return weapon; }
 const Item People::getItem() const { return item; }

@@ -1,4 +1,5 @@
 #include "Monster.hpp"
+#include "Player.hpp"
 #include <iostream>
 
 using namespace std;
@@ -9,12 +10,14 @@ int main(){
   Item d;
   Potion p;
   Potion pp(10);
+  Player mo("Brutus");
+  mo.setSymbole('^');
+  mo.print();
   const Weapon w;
   const Monster m,n;
   Case cas;
   m.print();
   p.print();
-  //cout << m.getItem().getSymbole() << endl;
   cout << w.getDurability() << endl;
   while(w.setDurability())
     cout << w.getDurability() << endl;
