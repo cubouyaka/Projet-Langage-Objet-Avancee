@@ -4,14 +4,18 @@
 
 class Item : public Case {
 private:
-  //const char symbole;
   const char * name;
   const int pods;
 
 public:
-  Item(const char s = '?', const char * n = "Unknown Item", const int p = 1);
+  //CONSTRUCTOR
+  Item(char s = '?', const char * n = "Unknown Item", const int p = 1);
+  Item(const Item &i);
 
-  //const char getSymbole() const;
+  //OPERATORS
+  Item& operator=(const Item &i);
+
+  //GETTERS
   const char * getName() const;
   const int getPods() const;
 

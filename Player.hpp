@@ -7,7 +7,6 @@
 
 class Player : public People {
 private: 
-  char symbole;
   const char * name;
   mutable std::vector<Item> bag;
 public:

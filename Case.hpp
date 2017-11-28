@@ -22,12 +22,20 @@ using namespace std;
 
 class Case {
 protected:
-  const char symbole;
+  mutable char symbole;
 
 public:
-  Case(const char s = ' ');
+  //CONSTRUCTORS
+  Case(char s = ' ');
+  Case(const Case &c);
 
-  const char getSymbole() const;
+  //OPERATORS
+  Case& operator=(const Case &c);
+
+  //GETTER
+  char getSymbole() const;
+
+  //METHODS
   void print() const;
 
 };

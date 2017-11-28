@@ -1,8 +1,13 @@
 #include "Case.hpp"
 
-Case::Case(const char s) : symbole(s) {}
+Case::Case(char s) : symbole(s) {}
 
-const char Case::getSymbole() const{ return symbole; }
+Case& Case::operator=(const Case &c){
+  symbole = c.getSymbole();
+  return *this;
+}
+
+char Case::getSymbole() const{ return symbole; }
 void Case::print() const{ cout << symbole; }
 
 Empty::Empty() : Case('.') {}

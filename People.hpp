@@ -16,13 +16,28 @@ protected:
   const Item item;
 
 public :
-  People(const char s = '!', int l = MAX_LIFE, double r = 1, const int S = 1,
+  //CONSTRUCTORS
+  People(char s = '!', int l = MAX_LIFE, double r = 1, const int S = 1,
 	 Weapon w = DEFAULT_WEAPON, const Item i = Item());
+  People(const People &p);
 
+  //OPERATORS
+  People& operator=(const People &p);
+
+  //GETTERS
+  int getLife() const;
+  double getResi() const;
+  const int getSize() const;
   const Weapon getWeapon() const;
   const Item getItem() const;
 
-  bool attacked(const Weapon &w); //get dammage of the weapon w and return true ifthe people die.
+  //SETTERS
+  void setWeapon(Weapon &w);
+
+  //METHODS
+  bool attacked(const People &p); 
+  //get attacked by people p and return true if the people (this) die.
+  void attack(People &p); //attack the people p with the weapon
   void drinkPotion(const HealingPotion &p);
   void drinkPotion(const Posion &p); //lunch die if needed 
   void drinkPotion(const ResiUpPotion &p);
