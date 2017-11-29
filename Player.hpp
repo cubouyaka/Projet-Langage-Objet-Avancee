@@ -10,8 +10,9 @@ private:
   const char * name;
   mutable std::vector<Item> bag;
 public:
-  Player(const char* n = "?", int l = MAX_LIFE_PLAYER, const double r = 1,
-	 const int s = 1, const Weapon w = DEFAULT_WEAPON);
+  Player(int i = -1, int j = -1, const char* n = "?", int l = MAX_LIFE_PLAYER, 
+	 const double r = 1,const int s = 1, int va = 5,
+	 const Weapon w = DEFAULT_WEAPON);
 
   void setSymbole(char s);
   const char * getName() const;

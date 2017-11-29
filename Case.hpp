@@ -23,17 +23,21 @@ using namespace std;
 class Case {
 protected:
   mutable char symbole;
+  mutable int i;
+  mutable int j;
 
 public:
   //CONSTRUCTORS
-  Case(char s = ' ');
+  Case(char s = ' ', int i = -1, int j = -1);
   Case(const Case &c);
 
   //OPERATORS
   Case& operator=(const Case &c);
 
-  //GETTER
+  //GETTERS
   char getSymbole() const;
+  int getI() const;
+  int getJ() const;
 
   //METHODS
   void print() const;

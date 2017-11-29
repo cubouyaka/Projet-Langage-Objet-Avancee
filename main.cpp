@@ -10,7 +10,7 @@ int main(){
   Item d;
   Potion p;
   Potion pp(10);
-  Player mo("Brutus");
+  Player mo(0,0,"Brutus");
   mo.setSymbole('^');
   mo.print();
   const Weapon w;

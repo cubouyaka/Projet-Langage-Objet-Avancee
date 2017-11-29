@@ -9,7 +9,8 @@ private:
 
 public:
   //CONSTRUCTOR
-  Item(char s = '?', const char * n = "Unknown Item", const int p = 1);
+  Item(char s = '?', const char * n = "Unknown Item", int i = -1, int j = -1, 
+       const int p = 1);
   Item(const Item &i);
 
   //OPERATORS

@@ -6,8 +6,9 @@
 
 class Monster : public People {
 public:
-  Monster(int l = MAX_LIFE, const double r = 1, const int s = 1,
-	  const Weapon w = DEFAULT_WEAPON, const Item i = Item());
+  Monster(int i = -1, int j = -1, int l = MAX_LIFE, const double r = 1, 
+	  const int s = 1, int va = 3, const Weapon w = DEFAULT_WEAPON, 
+	  const Item it = Item());
   void print() const;
 };
 

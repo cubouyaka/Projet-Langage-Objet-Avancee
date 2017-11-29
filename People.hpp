@@ -3,8 +3,8 @@
 #include "Weapon.hpp" 
 #include "Potion.hpp"
 
-#define MAX_LIFE 500
-#define MAX_LIFE_PLAYER 100
+#define MAX_LIFE 100
+#define MAX_LIFE_PLAYER 500
 #define DEFAULT_WEAPON Weapon(5,-1,1,'?',"Hands",0)
 
 class People : public Case {
@@ -12,13 +12,15 @@ protected:
   mutable int life;
   mutable double resi;
   const int size;
+  mutable int visual_area;
   mutable Weapon weapon;
   const Item item;
 
 public :
   //CONSTRUCTORS
-  People(char s = '!', int l = MAX_LIFE, double r = 1, const int S = 1,
-	 Weapon w = DEFAULT_WEAPON, const Item i = Item());
+ People(int i = -1, int j = -1, char s = '!', int l = MAX_LIFE, double r = 1,
+	const int S = 1, int va = 3, Weapon w = DEFAULT_WEAPON,
+	const Item it = Item());
   People(const People &p);
 
   //OPERATORS
@@ -28,6 +30,7 @@ public :
   int getLife() const;
   double getResi() const;
   const int getSize() const;
+  int getVArea() const;
   const Weapon getWeapon() const;
   const Item getItem() const;
 

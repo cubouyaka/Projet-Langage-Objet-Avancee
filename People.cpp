@@ -1,10 +1,12 @@
 #include "People.hpp"
 
-People::People(char s, int l, double r, const int S, Weapon w,const Item i)
-  : Case(s), life(l), resi(r), size(S), weapon(w), item(i){ }
-People::People(const People &p) : life(p.getLife()), resi(p.getResi()),
-				  size(p.getSize()), weapon(p.getWeapon()),
-				  item(p.getItem()) {}
+People::People(int i, int j, char s, int l, double r, const int S, int va,
+	       Weapon w,const Item it) : Case(s,i,j), life(l), resi(r), size(S), 
+					visual_area(va), weapon(w), item(it){ }
+People::People(const People &p) : Case(p.getI(), p.getJ(), p.getSymbole()), 
+				  life(p.getLife()), resi(p.getResi()),
+				  size(p.getSize()), visual_area(p.getVArea()),
+				  weapon(p.getWeapon()),item(p.getItem()) {}
 
 People& People::operator=(const People &p){
   //TODO 
@@ -13,6 +15,7 @@ People& People::operator=(const People &p){
 int People::getLife() const { return life; }
 double People::getResi() const { return resi; }
 const int People::getSize() const { return size; }
+int People::getVArea() const { return visual_area; }
 const Weapon People::getWeapon() const { return weapon; }
 const Item People::getItem() const { return item; }
 void People::setWeapon(Weapon &w) { weapon = w; }
