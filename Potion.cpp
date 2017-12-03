@@ -12,4 +12,4 @@ void Posion::print() const { cout << BLUE << symbole << RESET; }
 ResiUpPotion::ResiUpPotion(const int e) : Potion(e,'R',"Resistance+ Potion"){}
 
 ResiDownPotion::ResiDownPotion(const int e):Potion(e,'r',"Resistance- Potion"){} 
-void ResiDownPotion::print() const { cout << BLUE << symbole << RESET; }
+void ResiDownPotion::print() const { cout << 'y'<<BLUE << symbole << RESET; }

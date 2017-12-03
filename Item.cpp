@@ -11,3 +11,7 @@ Item& Item::operator=(const Item &i){
 				       
 const char * Item::getName() const{ return name; }
 const int Item::getPods() const{ return pods; }
+
+void Item::print(){
+  cout << 'T';
+}

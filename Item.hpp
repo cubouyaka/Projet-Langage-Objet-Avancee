@@ -20,6 +20,8 @@ public:
   const char * getName() const;
   const int getPods() const;
 
+  virtual void print();
+
 };
 
 #endif

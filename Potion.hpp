@@ -13,7 +13,7 @@ public:
 	 const char * n = "Unknown Potion");
 
   const int getEffect() const;
-  void print() const;
+  virtual void print() const;
 };
 
 class HealingPotion : public Potion {

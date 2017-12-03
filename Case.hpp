@@ -1,6 +1,7 @@
 #ifndef CASE_H
 #define CASE_H
 #include <iostream>
+#include <iomanip>
 
 #define RED "\033[31m"
 #define BOLDRED "\033[1m\033[31m"
@@ -40,7 +41,7 @@ public:
   int getJ() const;
 
   //METHODS
-  void print() const;
+  virtual void print() const;
 
 };
 
