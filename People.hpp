@@ -2,6 +2,7 @@
 #define PEOPLE_H
 #include "Weapon.hpp" 
 #include "Potion.hpp"
+#include <stdlib.h>
 
 #define MAX_LIFE 100
 #define MAX_LIFE_PLAYER 500
@@ -31,7 +32,7 @@ public :
   double getResi() const;
   const int getSize() const;
   int getVArea() const;
-  const Weapon getWeapon() const;
+  Weapon getWeapon() const;
   const Item getItem() const;
 
   //SETTERS
@@ -40,7 +41,7 @@ public :
   //METHODS
   bool attacked(const People &p); 
   //get attacked by people p and return true if the people (this) die.
-  void attack(People &p); //attack the people p with the weapon
+  virtual void attack(People &p); //attack the people p
   void drinkPotion(const HealingPotion &p);
   void drinkPotion(const Posion &p); //lunch die if needed 
   void drinkPotion(const ResiUpPotion &p);
