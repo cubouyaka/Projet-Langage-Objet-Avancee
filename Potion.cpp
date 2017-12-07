@@ -1,6 +1,7 @@
 #include "Potion.hpp"
 
-Potion::Potion(const int e, const char s, const char* n):Item(s,n), effect(e){} 
+Potion::Potion(const int e, const char s, const char* n,Floor * f) : Item(f,s,n),
+								     effect(e){} 
 const int Potion::getEffect() const { return effect; }
 void Potion::print() const { cout << BOLDBLUE << symbole << RESET; }
 

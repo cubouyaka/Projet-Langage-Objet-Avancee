@@ -23,7 +23,7 @@ public:
   //CONSTRUCTORS
   Weapon(const int a = DEFAULT_WEAPON_A, int d = DEFAULT_WEAPON_D,
 	 const int sc = 1, const char s = 'W',
-	 const char * n = "Unknown Weapon", const int p = 5);
+	 const char * n = "Unknown Weapon", const int p = 5, Floor * f = NULL);
   Weapon(const Weapon &w);
 
   //OPERATORS

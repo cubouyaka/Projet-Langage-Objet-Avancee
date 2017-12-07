@@ -1,11 +1,13 @@
 #include "People.hpp"
 
-People::People(int i, int j, char s, int l, double r, const int S, int va,
-	       Weapon w,const Item it) : Case(s,i,j), life(l), resi(r), size(S), 
-					 visual_area(va), weapon(w), item(it){ }
-People::People(const People &p) : Case(p.getI(), p.getJ(), p.getSymbole()), 
-				  life(p.getLife()), resi(p.getResi()),
-				  size(p.getSize()), visual_area(p.getVArea()),
+People::People(Floor* f,int i, int j, char s, int l, double r, const int S, 
+	       int va, Weapon w,const Item it) : Case(s,f,i,j), life(l), resi(r),
+						 size(S), visual_area(va), 
+						 weapon(w), item(it){ }
+People::People(const People &p) : Case(p.getSymbole(),p.getFloor(), p.getI(), 
+				       p.getJ()), life(p.getLife()), 
+				  resi(p.getResi()), size(p.getSize()), 
+				  visual_area(p.getVArea()),
 				  weapon(p.getWeapon()),item(p.getItem()) {}
 
 People& People::operator=(const People &p){

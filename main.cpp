@@ -9,14 +9,12 @@ using namespace std;
 
 
 int main(){
-  /*Potion pp(10,'P',"eau de vie");
+  Potion pp(10,'P',"eau de vie");
   Floor f(10,10);
   Item p;
-  for(int i = 0; i < 10 ; i++)
-    for(int j = 0; j< 10; j++)
-      f.setBoard(i,j,pp);
+  f.setBoard(1,0,pp);
   f.setBoard(4,5,p);
-  f.print();*/
+  f.print();
 
   /*Wizard w(0,0);
   People p(10,1);

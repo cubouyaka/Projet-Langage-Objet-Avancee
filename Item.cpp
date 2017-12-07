@@ -1,8 +1,8 @@
 #include "Item.hpp"
 
-Item::Item(char s, string n, int p, int i, int j) : Case(s,i,j),
-							       name(n),pods(p) {}
-Item::Item(const Item &i) : Case(i.getSymbole(),i.getI(),i.getJ()),
+Item::Item(Floor* f, char s, string n, int p, int i, int j) : 
+  Case(s,f,i,j), name(n), pods(p) {}
+Item::Item(const Item &i) : Case(i.getSymbole(),i.getFloor(), i.getI(),i.getJ()),
 			    name(i.getName()), pods(i.getPods()) {} 
 
 Item& Item::operator=(const Item &i){

@@ -6,7 +6,7 @@ class Floor {
 protected:
   const int n;
   const int m;
-  mutable Case** board;
+  mutable Case*** board;
   
 
 public:
@@ -17,7 +17,7 @@ public:
   //GETTERS
   int getN() const;
   int getM() const;
-  Case** getBoard() const;
+  Case*** getBoard() const;
   void setBoard(const int i, const int j, Case &c);
 
   //METHODS

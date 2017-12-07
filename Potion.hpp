@@ -10,7 +10,7 @@ private:
   
 public:
   Potion(const int e = DEFAULT_POTION, const char s = 'P', 
-	 const char * n = "Unknown Potion");
+	 const char * n = "Unknown Potion",Floor* f = NULL);
 
   const int getEffect() const;
   virtual void print() const;

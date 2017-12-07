@@ -21,15 +21,18 @@
 
 using namespace std;
 
+class Floor;
+
 class Case {
 protected:
   mutable char symbole;
   mutable int i;
   mutable int j;
+  Floor * floor;
 
 public:
   //CONSTRUCTORS
-  Case(char s = ' ', int i = -1, int j = -1);
+  Case(char s = ' ', Floor * f = NULL, int i = -1, int j = -1);
   Case(const Case &c);
 
   //OPERATORS
@@ -39,6 +42,7 @@ public:
   char getSymbole() const;
   int getI() const;
   int getJ() const;
+  Floor* getFloor() const;
 
   //METHODS
   virtual void print() const;

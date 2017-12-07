@@ -9,8 +9,8 @@ private:
 
 public:
   //CONSTRUCTOR
-  Item(char s = '?', string n = "Unknown Item", int i = -1, int j = -1, 
-       const int p = 1);
+  Item(Floor* f = NULL ,char s = '?', string n = "Unknown Item", 
+       int i = -1, int j = -1, const int p = 1);
   Item(const Item &i);
 
   //OPERATORS

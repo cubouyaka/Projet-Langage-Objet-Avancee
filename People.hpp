@@ -19,9 +19,9 @@ protected:
 
 public :
   //CONSTRUCTORS
- People(int i = -1, int j = -1, char s = '!', int l = MAX_LIFE, double r = 1,
-	const int S = 1, int va = 3, Weapon w = DEFAULT_WEAPON,
-	const Item it = Item());
+  People(Floor * f = NULL, int i = -1, int j = -1, char s = '!', 
+	 int l = MAX_LIFE, double r = 1, const int S = 1, int va = 3,
+	 Weapon w = DEFAULT_WEAPON, const Item it = Item());
   People(const People &p);
 
   //OPERATORS
