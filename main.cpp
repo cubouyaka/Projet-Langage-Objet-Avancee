@@ -17,21 +17,15 @@ int main(){
       f.setBoard(i,j,pp);
   f.setBoard(4,5,p);
   f.print();*/
-  Wizard w(0,0);
+
+  /*Wizard w(0,0);
   People p(10,1);
   Weapon fireBall(15,-1,5,'?',"FireBall");
   People t(12,45,'T',1000,2,4,4,fireBall);
-  cout << GREEN << p.getSymbole() << endl;
-  p = t;
-  cout << GREEN << p.getSymbole() << endl;
-  Weapon re;
-  re = fireBall;
-  cout<<WHITE <<re.getSymbole()<<YELLOW<<w.getWeapon().getSymbole()<<endl;
-  p.setWeapon(re);
-  cout<<BLUE<<p.getWeapon().getName()<<RESET;
   cout << p.getLife() << endl;
   w.attack(p);
-  cout << p.getLife() << endl;
+  cout << p.getLife() << endl;*/
+
   /*  mo.setSymbole('^');
   mo.print();
   Warrior w;

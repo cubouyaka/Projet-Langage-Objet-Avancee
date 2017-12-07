@@ -6,8 +6,6 @@ void Wizard::attack(People &p){
   Weapon fireBall(15,-1,5,'?',"FireBall");
   cout << getWeapon().getName() << endl;
   Weapon w = getWeapon();
-  weapon = fireBall;
-  cout << GREEN<<weapon.getName()<<RESET;
   if(abs(getI()-p.getI())>w.getScope() || abs(getJ()-p.getJ())>w.getScope())
     setWeapon(fireBall); //attack with fireball
   cout << GREEN<<weapon.getName()<<RESET;

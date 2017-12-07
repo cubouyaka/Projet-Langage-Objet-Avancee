@@ -22,7 +22,7 @@ const int People::getSize() const { return size; }
 int People::getVArea() const { return visual_area; }
 Weapon People::getWeapon() const { return weapon; }
 const Item People::getItem() const { return item; }
-void People::setWeapon(Weapon &w) { weapon = w;cout<<RED<<weapon.getName()<<RESET; }
+void People::setWeapon(Weapon &w) { weapon = w; }
 
 bool People::attacked(const People &p){
   return (life-=(p.getWeapon().getAttack()*resi)) <= 0;
