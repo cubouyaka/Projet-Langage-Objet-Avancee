@@ -43,8 +43,10 @@ public:
   int getI() const;
   int getJ() const;
   Floor* getFloor() const;
+  virtual bool getPlayed() const;
 
   //METHODS
+  virtual void turn();
   virtual void print() const;
 
 };

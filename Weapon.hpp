@@ -39,10 +39,5 @@ public:
 
   //METHODS
 };
-/*
-class Hands : public Weapon {
-public:
-  Hands();
-};
-*/
+
 #endif

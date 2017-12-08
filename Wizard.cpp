@@ -3,14 +3,11 @@
 Wizard::Wizard(int i, int j, int l, const double r, char c, const int s, int va, Weapon w, const Item it) : Monster(i,j,c,l,r,s,va,w,it){}
 
 void Wizard::attack(People &p){
-  Weapon fireBall(15,-1,5,'?',"FireBall");
-  cout << getWeapon().getName() << endl;
+  Weapon fireBall = FIREBALL;
   Weapon w = getWeapon();
   if(abs(getI()-p.getI())>w.getScope() || abs(getJ()-p.getJ())>w.getScope())
     setWeapon(fireBall); //attack with fireball
-  cout << GREEN<<weapon.getName()<<RESET;
   p.attacked(*this);
-  cout << getWeapon().getName() << endl;
   if(weapon.setDurability()){ //if the weapon is over
     cout << BOLDMAGENTA << getWeapon().getName() << 
       " is over, now you're using your hands" << RESET << endl;

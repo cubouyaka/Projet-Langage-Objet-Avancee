@@ -19,6 +19,15 @@ void Floor::setBoard(const int i, const int j, Case &c) {
   //TODO else: out of bounds
 }
 
+void Floor::turn() {
+  for(int i = 0; i < n; i++)
+    for(int j = 0; j < m; j++)
+      if(!board[i][j]->getPlayed()){ //if it didn't moved already
+	cout << "TTTTTTTTT\n";
+	board[i][j]->turn();
+      }
+}
+
 void Floor::print() const{
   cout << endl <<'+'<< setfill('-') << setw(n+1) << '+' << endl;
   for(int i = 0; i < n; i++){

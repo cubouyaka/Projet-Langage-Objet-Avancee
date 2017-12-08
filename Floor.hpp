@@ -21,6 +21,7 @@ public:
   void setBoard(const int i, const int j, Case &c);
 
   //METHODS
+  void turn();
   void print() const;
 
 };

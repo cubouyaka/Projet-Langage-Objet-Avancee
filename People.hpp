@@ -16,6 +16,7 @@ protected:
   mutable int visual_area;
   mutable Weapon weapon;
   const Item item;
+  bool played; //if the people played this turn
 
 public :
   //CONSTRUCTORS
@@ -28,6 +29,7 @@ public :
   People& operator=(const People &p);
 
   //GETTERS
+  bool getPlayed() const;
   int getLife() const;
   double getResi() const;
   const int getSize() const;

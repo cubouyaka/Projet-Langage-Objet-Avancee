@@ -15,6 +15,9 @@ Floor* Case::getFloor() const{ return floor; }
 int Case::getI() const{ return i; }
 int Case::getJ() const{ return j; }
 char Case::getSymbole() const{ return symbole; }
+bool Case::getPlayed() const { return true; }
+
+void Case::turn() {}
 void Case::print() const{ cout << symbole; }
 
 Empty::Empty() : Case('.') {}

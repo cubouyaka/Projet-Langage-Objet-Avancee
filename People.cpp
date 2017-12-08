@@ -1,14 +1,13 @@
 #include "People.hpp"
 
-People::People(Floor* f,int i, int j, char s, int l, double r, const int S, 
-	       int va, Weapon w,const Item it) : Case(s,f,i,j), life(l), resi(r),
-						 size(S), visual_area(va), 
-						 weapon(w), item(it){ }
-People::People(const People &p) : Case(p.getSymbole(),p.getFloor(), p.getI(), 
-				       p.getJ()), life(p.getLife()), 
-				  resi(p.getResi()), size(p.getSize()), 
-				  visual_area(p.getVArea()),
-				  weapon(p.getWeapon()),item(p.getItem()) {}
+People::People(Floor* f,int i, int j, char s, int l,double r, const int S,int va,
+	       Weapon w,const Item it) : Case(s,f,i,j), life(l), resi(r),
+					 size(S), visual_area(va), weapon(w),
+					 item(it){ played = false; }
+People::People(const People &p) : 
+  Case(p.getSymbole(),p.getFloor(),p.getI(),p.getJ()),life(p.getLife()), 
+  resi(p.getResi()), size(p.getSize()), visual_area(p.getVArea()),
+  weapon(p.getWeapon()),item(p.getItem()) { played = false;}
 
 People& People::operator=(const People &p){
   life = p.getLife();
@@ -18,6 +17,7 @@ People& People::operator=(const People &p){
   cout << "REREé"<<endl;
 }
 
+bool People::getPlayed() const{ return played; }
 int People::getLife() const { return life; }
 double People::getResi() const { return resi; }
 const int People::getSize() const { return size; }

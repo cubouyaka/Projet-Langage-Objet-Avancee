@@ -9,20 +9,21 @@ using namespace std;
 
 
 int main(){
-  Potion pp(10,'P',"eau de vie");
   Floor f(10,10);
-  Item p;
+  string name = "Ivan LE TERRILE";
+  Player p1(&f, 3,7,name);
+  f.setBoard(3,7,p1);
+  Potion pp(10,'P',"eau de vie");
   f.setBoard(1,0,pp);
-  f.setBoard(4,5,p);
   f.print();
-
-  /*Wizard w(0,0);
-  People p(10,1);
+  Wizard w(0,0);
+  People p(&f,10,1);
   Weapon fireBall(15,-1,5,'?',"FireBall");
-  People t(12,45,'T',1000,2,4,4,fireBall);
+  People t(&f,12,45,'T',1000,2,4,4,fireBall);
   cout << p.getLife() << endl;
   w.attack(p);
-  cout << p.getLife() << endl;*/
+  cout << p.getLife() << endl;
+  f.turn();
 
   /*  mo.setSymbole('^');
   mo.print();
