@@ -36,10 +36,18 @@ void Player::turn() {
 void Player::move(char c){
   switch(c){
   case 'k' :
-  case 'o' :
+    if(i < floor->getN() && i >= 0){
+      if(j < floor->getM() && j >= 0){
+	cout << "TR" <<endl;
+	floor->setBoard(i-1,j,*this);
+	floor->setBoard(i,j);
+	floor->print();
+      }
+    }
+    /*case 'o' :
   case 'l' :
-  case 'm' :
-  default:
-    cout <<BOLDRED<< "Error move player, wrong command\n";
+  case 'm' :*/
+    // default:
+    //    cout <<BOLDRED<< "Error move player, wrong command\n"<<RESET;
   }
 }

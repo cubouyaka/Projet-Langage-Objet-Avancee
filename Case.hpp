@@ -3,6 +3,8 @@
 #include <iostream>
 #include <iomanip>
 
+#include "Floor.hpp"
+
 #define RED "\033[31m"
 #define BOLDRED "\033[1m\033[31m"
 #define BLUE "\033[34m"
@@ -54,7 +56,7 @@ public:
 //An empty case (inside a room)
 class Empty : public Case {
 public:
-  Empty();
+  Empty();//Floor *f = NULL);
 };
 
 #endif

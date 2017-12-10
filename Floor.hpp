@@ -1,6 +1,8 @@
 #ifndef FLOOR_H
 #define FLOOR_H
-#include "Case.hpp"
+//#include "Case.hpp"
+
+class Case;
 
 class Floor {
 protected:
@@ -18,6 +20,7 @@ public:
   int getN() const;
   int getM() const;
   Case*** getBoard() const;
+  void setBoard(const int i, const int j);
   void setBoard(const int i, const int j, Case &c);
 
   //METHODS
