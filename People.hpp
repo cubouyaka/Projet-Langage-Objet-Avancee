@@ -16,18 +16,20 @@ protected:
   mutable int visual_area;
    mutable Weapon weapon;
   const Item item;
+  bool played; //if the people played this turn
 
 public :
   //CONSTRUCTORS
- People(int i = -1, int j = -1, char s = '!', int l = MAX_LIFE, double r = 1,
-	const int S = 1, int va = 3, Weapon w = DEFAULT_WEAPON,
-	const Item it = Item());
+  People(Floor * f = NULL, int i = -1, int j = -1, char s = '!', 
+	 int l = MAX_LIFE, double r = 1, const int S = 1, int va = 3,
+	 Weapon w = DEFAULT_WEAPON, const Item it = Item());
   People(const People &p);
 
   //OPERATORS
   People& operator=(const People &p);
 
   //GETTERS
+  bool getPlayed() const;
   int getLife() const;
   double getResi() const;
   const int getSize() const;

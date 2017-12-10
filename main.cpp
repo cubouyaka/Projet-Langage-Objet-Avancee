@@ -11,8 +11,8 @@ using namespace std;
 
 
 int main(){
-  /*Potion pp(10,'P',"eau de vie");
   Floor f(10,10);
+<<<<<<< HEAD
   Item p;
   for(int i = 0; i < 10 ; i++)
     for(int j = 0; j< 10; j++)
@@ -51,10 +51,28 @@ int main(){
   cout<<WHITE <<re.getSymbole()<<YELLOW<<w.getWeapon().getSymbole()<<endl;
   p.setWeapon(fireBall);
   cout<<BLUE<<p.getWeapon().getName()<<RESET;
+=======
+  string name = "Ivan LE TERRILE";
+  Player p1(&f, 3,7,name);
+  f.setBoard(3,7,p1);
+  Potion pp(10,'P',"eau de vie");
+  f.setBoard(1,0,pp);
+  f.print();
+  Wizard w(0,0);
+  People p(&f,10,1);
+  Weapon fireBall(15,-1,5,'?',"FireBall");
+  People t(&f,12,45,'T',1000,2,4,4,fireBall);
+>>>>>>> ccafb6b75eb7b2b1f4b4e3593b016536820f6408
   cout << p.getLife() << endl;
 
   w.attack(p);
+<<<<<<< HEAD
   cout << p.getLife() << endl;*/
+=======
+  cout << p.getLife() << endl;
+  f.turn();
+
+>>>>>>> ccafb6b75eb7b2b1f4b4e3593b016536820f6408
   /*  mo.setSymbole('^');
   mo.print();
   Warrior w;
