@@ -39,7 +39,9 @@ public:
   char getSymbole() const;
   int getI() const;
   int getJ() const;
-
+  //SETTERS
+  void SetI(int _i);
+  void SetJ(int _j);
   //METHODS
   virtual void print() const;
 

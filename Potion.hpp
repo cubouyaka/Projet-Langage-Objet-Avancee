@@ -1,15 +1,15 @@
 #ifndef POTION_H
 #define POTION_H
 #include "Item.hpp"
-
+using namespace std;
 #define DEFAULT_POTION 10
 
 class Potion : public Item {
 private:
   const int effect;
-  
+
 public:
-  Potion(const int e = DEFAULT_POTION, const char s = 'P', 
+  Potion(const int e = DEFAULT_POTION, const char s = 'P',
 	 const char * n = "Unknown Potion");
 
   const int getEffect() const;

@@ -12,6 +12,8 @@ Case& Case::operator=(const Case &c){
 
 int Case::getI() const{ return i; }
 int Case::getJ() const{ return j; }
+void Case::SetI(int _i){i=_i;}
+void Case::SetJ(int _j){j=_j;}
 char Case::getSymbole() const{ return symbole; }
 void Case::print() const{ cout << symbole; }
 

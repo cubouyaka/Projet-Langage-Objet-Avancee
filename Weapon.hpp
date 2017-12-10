@@ -15,9 +15,9 @@
 
 class Weapon : public Item {
 private:
-  const int attack;
-  const int scope;
-  mutable int durability; //if -1 : indestructible 
+  mutable int attack;
+  mutable int scope;
+  mutable int durability; //if -1 : indestructible
 
 public:
   //CONSTRUCTORS
