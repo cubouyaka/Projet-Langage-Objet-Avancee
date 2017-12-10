@@ -1,6 +1,6 @@
 #ifndef PEOPLE_H
 #define PEOPLE_H
-#include "Weapon.hpp" 
+#include "Weapon.hpp"
 #include "Potion.hpp"
 #include <stdlib.h>
 
@@ -14,7 +14,7 @@ protected:
   mutable double resi;
   const int size;
   mutable int visual_area;
-  mutable Weapon weapon;
+   mutable Weapon weapon;
   const Item item;
   bool played; //if the people played this turn
 
@@ -41,11 +41,11 @@ public :
   void setWeapon(Weapon &w);
 
   //METHODS
-  bool attacked(const People &p); 
+  bool attacked(const People &p);
   //get attacked by people p and return true if the people (this) die.
   virtual void attack(People &p); //attack the people p
   void drinkPotion(const HealingPotion &p);
-  void drinkPotion(const Posion &p); //lunch die if needed 
+  void drinkPotion(const Posion &p); //lunch die if needed
   void drinkPotion(const ResiUpPotion &p);
   void drinkPotion(const ResiDownPotion &p);
   void die(); //destruct the people and drop object if needs

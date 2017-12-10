@@ -44,9 +44,15 @@ public:
   char getSymbole() const;
   int getI() const;
   int getJ() const;
+<<<<<<< HEAD
+  //SETTERS
+  void SetI(int _i);
+  void SetJ(int _j);
+=======
   Floor* getFloor() const;
   virtual bool getPlayed() const;
 
+>>>>>>> ccafb6b75eb7b2b1f4b4e3593b016536820f6408
   //METHODS
   virtual void turn();
   virtual void print() const;

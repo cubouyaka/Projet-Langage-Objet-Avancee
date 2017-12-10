@@ -14,6 +14,8 @@ Case& Case::operator=(const Case &c){
 Floor* Case::getFloor() const{ return floor; }
 int Case::getI() const{ return i; }
 int Case::getJ() const{ return j; }
+void Case::SetI(int _i){i=_i;}
+void Case::SetJ(int _j){j=_j;}
 char Case::getSymbole() const{ return symbole; }
 bool Case::getPlayed() const { return true; }
 
