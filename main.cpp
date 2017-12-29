@@ -11,14 +11,20 @@ using namespace std;
 
 
 int main(){
-  Floor f(10,10);
-<<<<<<< HEAD
+  Floor floor(15,10);
+  Posion poison(10);
+  floor.setBoard(0,0,poison);
+  Player player(&floor,3,7,"Ida");
+  floor.setBoard(3,7,player);
+  floor.print();
+  floor.turn();
+  /*Floor f(10,10);
   Item p;
   for(int i = 0; i < 10 ; i++)
     for(int j = 0; j< 10; j++)
       f.setBoard(i,j,pp);
   f.setBoard(4,5,p);
-  f.print();*/
+  f.print();
   Item it('i',"boisson magique");
   Item it2('c',"baguette magique");
   Item it3('a',"golden apple");
@@ -38,8 +44,9 @@ int main(){
   p.lookbag();
   p.remove_item_bag();
   Potion pos(10,'p',"pop drink");
-  pos.print();
-  /*Wizard w(0,0);
+  pos.print();*/
+  /*
+Wizard w(0,0);
   People p(10,1);
 
   People t(12,45,'T',1000,2,4,4,fireBall);
@@ -67,12 +74,10 @@ int main(){
 
   w.attack(p);
 <<<<<<< HEAD
-  cout << p.getLife() << endl;*/
-=======
   cout << p.getLife() << endl;
   f.turn();
+  //*/
 
->>>>>>> ccafb6b75eb7b2b1f4b4e3593b016536820f6408
   /*  mo.setSymbole('^');
   mo.print();
   Warrior w;

@@ -9,13 +9,8 @@ private:
   const int effect;
 
 public:
-<<<<<<< HEAD
-  Potion(const int e = DEFAULT_POTION, const char s = 'P',
-	 const char * n = "Unknown Potion");
-=======
   Potion(const int e = DEFAULT_POTION, const char s = 'P', 
 	 const char * n = "Unknown Potion",Floor* f = NULL);
->>>>>>> ccafb6b75eb7b2b1f4b4e3593b016536820f6408
 
   const int getEffect() const;
   virtual void print() const;

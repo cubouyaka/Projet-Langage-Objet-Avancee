@@ -1,11 +1,8 @@
 #include "Potion.hpp"
 
-<<<<<<< HEAD
-Potion::Potion(const int e, const char s, const char* n):Item(s,n), effect(e){}
-=======
+
 Potion::Potion(const int e, const char s, const char* n,Floor * f) : Item(f,s,n),
 								     effect(e){} 
->>>>>>> ccafb6b75eb7b2b1f4b4e3593b016536820f6408
 const int Potion::getEffect() const { return effect; }
 
 void Potion::print() const {

@@ -1,10 +1,12 @@
 #ifndef FLOOR_H
 #define FLOOR_H
-//#include "Case.hpp"
+
+#include "Case.hpp"
 
 class Case;
 
 class Floor {
+  friend class Case; 
 protected:
   const int n;
   const int m;
@@ -28,8 +30,5 @@ public:
   void print() const;
 
 };
-
-
-
 
 #endif

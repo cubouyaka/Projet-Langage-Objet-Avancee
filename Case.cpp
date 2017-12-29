@@ -14,12 +14,12 @@ Case& Case::operator=(const Case &c){
 Floor* Case::getFloor() const{ return floor; }
 int Case::getI() const{ return i; }
 int Case::getJ() const{ return j; }
-void Case::SetI(int _i){i=_i;}
-void Case::SetJ(int _j){j=_j;}
+void Case::setI(int _i){i=_i;}
+void Case::setJ(int _j){j=_j;}
 char Case::getSymbole() const{ return symbole; }
 bool Case::getPlayed() const { return true; }
 
 void Case::turn() {}
 void Case::print() const{ cout << symbole; }
 
-Empty::Empty() : Case('.') {}
+Empty::Empty(Floor * floor, int i, int j) : Case('.',floor,i,j) {}

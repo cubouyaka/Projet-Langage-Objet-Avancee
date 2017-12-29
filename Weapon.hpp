@@ -17,11 +17,7 @@ class Weapon : public Item {
 private:
   mutable int attack;
   mutable int scope;
-<<<<<<< HEAD
   mutable int durability; //if -1 : indestructible
-=======
-  mutable int durability; //if -1 : indestructible 
->>>>>>> ccafb6b75eb7b2b1f4b4e3593b016536820f6408
 
 public:
   //CONSTRUCTORS

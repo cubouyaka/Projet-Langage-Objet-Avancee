@@ -1,6 +1,7 @@
 #ifndef CASE_H
 #define CASE_H
 #include <iostream>
+#include <stdio.h>
 #include <iomanip>
 
 #include "Floor.hpp"
@@ -44,15 +45,12 @@ public:
   char getSymbole() const;
   int getI() const;
   int getJ() const;
-<<<<<<< HEAD
   //SETTERS
-  void SetI(int _i);
-  void SetJ(int _j);
-=======
+  void setI(int _i);
+  void setJ(int _j);
   Floor* getFloor() const;
   virtual bool getPlayed() const;
 
->>>>>>> ccafb6b75eb7b2b1f4b4e3593b016536820f6408
   //METHODS
   virtual void turn();
   virtual void print() const;
@@ -62,7 +60,7 @@ public:
 //An empty case (inside a room)
 class Empty : public Case {
 public:
-  Empty();//Floor *f = NULL);
+  Empty(Floor *f = NULL, int i = -1, int j = -1);
 };
 
 #endif
