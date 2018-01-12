@@ -4,7 +4,7 @@
 #include "Potion.hpp"
 #include <stdlib.h>
 
-#define MAX_LIFE 100
+#define MAX_LIFE 10
 #define MAX_LIFE_PLAYER 500
 #define DEFAULT_WEAPON Weapon(5,-1,1,'?',"Hands",0)
 
@@ -14,7 +14,7 @@ protected:
   mutable double resi;
   const int size;
   mutable int visual_area;
-   mutable Weapon weapon;
+  mutable Weapon weapon;
   const Item item;
   bool played; //if the people played this turn
 
@@ -24,11 +24,13 @@ public :
 	 int l = MAX_LIFE, double r = 1, const int S = 1, int va = 3,
 	 Weapon w = DEFAULT_WEAPON, const Item it = Item());
   People(const People &p);
+  virtual ~People();
 
   //OPERATORS
   People& operator=(const People &p);
 
   //GETTERS
+  virtual const string getName() const;
   bool getPlayed() const;
   int getLife() const;
   double getResi() const;

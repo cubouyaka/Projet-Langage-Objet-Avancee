@@ -14,11 +14,12 @@ int Floor::getN() const { return n; }
 int Floor::getM() const { return m; }
 Case*** Floor::getBoard() const { return board; }
 Case* Floor::getCase(const int i, const int j) const{ return board[i][j]; }
-void Floor::setBoard(const int i, const int j) { 
-  if(0 <= i && i < n && 0 <= j && j < m)
-    board[i][j] = new Empty(this,i,j); 
+void Floor::setBoard(const int i, const int j) {
+  if(0 <= i && i < getN() && 0 <= j && j < getM())
+    board[i][j] = new Empty(this,i,j);
   //TODO else: out of bounds
-}void Floor::setBoard(const int i, const int j, Case &c) { 
+}
+void Floor::setBoard(const int i, const int j, Case &c) { 
   if(0 <= i && i < n && 0 <= j && j < m)
     board[i][j] = &c; 
   //TODO else: out of bounds

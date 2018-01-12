@@ -101,11 +101,12 @@ void Player::turn() {
 void Player::move(char c){
   if(c == 'k'){
     if(j > 0){ //not out of bounds
-      interact(*floor->getCase(i,j-1));
-      floor->setBoard(i,j-1,*this);
-      setSymbole('<');
-      floor->setBoard(i,j);
-      setJ(j-1);
+      if(interact(*floor->getCase(i,j-1))){
+	floor->setBoard(i,j-1,*this);
+	setSymbole('<');
+	floor->setBoard(i,j);
+	setJ(j-1);
+      }
     }
   }else if( c == 'o'){
     if(i > 0){
@@ -137,8 +138,11 @@ bool Player::interact(Case & c){
     return true;
   else if(c.typeOf() == ITEM){
     askUseOrStore((Item&)c);
+    return true;
+  }else if(c.typeOf() == MONSTER){
+    attack((People&)c);
+    return false;
   }
-  cout << c.typeOf() << endl;
 }
 
 void Player::askUseOrStore(Item &item){
@@ -148,9 +152,13 @@ void Player::askUseOrStore(Item &item){
   cout << "Do you want to use(u) " << item.getName() << 
     " or store(s) it in your bag ?" << endl;
   while(b){
-    cin >> c;
+    system("stty raw");
+    c = getchar();
+    system("stty cooked");
+    cout << endl;
     if(c != 'u' && c != 's')
-      cout << RED << "Wrong answer. Press u to use " << item.getName() <<" or s to store it" << endl;
+      cout << RED << "Wrong answer. Press u to use " << item.getName()
+	   <<" or s to store it" << RESET << endl;
     else
       b = false; 
   }

@@ -16,6 +16,9 @@ int main(){
   floor.setBoard(0,0,poison);
   Player player(&floor,3,7,"Ida");
   floor.setBoard(3,7,player);
+  Monster monster(10,2);
+  floor.setBoard(10,2,monster);
+  monster.setFloor(&floor);
   floor.print();
   floor.turn();
   /*Floor f(10,10);
