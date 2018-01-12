@@ -35,7 +35,9 @@ public:
   void setPods(const int i);
   void setName(string c);
 
+  //METHODS
   virtual void print();
+  virtual int typeOf() const;
 
 };
 

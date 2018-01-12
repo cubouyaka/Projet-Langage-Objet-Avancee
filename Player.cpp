@@ -51,86 +51,110 @@ void Player::remove_item_bag( ){
 
 /*void Player::change_Weapon(){
   if(bag.size()<=0)
-    cout <<"your bag is empty, you can't change your weapon"<<endl;
-    else{
-    cout<<"choice the number of weapon wich you want replace"<<endl;
-    lookbag();
-    int i=0;
-    cin >>i ;
-    while(i<0 ||i>=bag.size())
-    {
-    cout <<"Wrong number, this item does not exist in your bag "<<endl;
-    cout <<"please put a valid number"<<endl;
-    cin >>i ;
-    if(bag[i])
-    }
+  cout <<"your bag is empty, you can't change your weapon"<<endl;
+  else{
+  cout<<"choice the number of weapon wich you want replace"<<endl;
+  lookbag();
+  int i=0;
+  cin >>i ;
+  while(i<0 ||i>=bag.size())
+  {
+  cout <<"Wrong number, this item does not exist in your bag "<<endl;
+  cout <<"please put a valid number"<<endl;
+  cin >>i ;
+  if(bag[i])
+  }
 
-    cout<<"you have choosen this item: "<<CYAN<<bag[i].getName()<<RESET<<" it will be remove in your bag"<<endl;
-  */
-  const string Player::getName() const { return name; }
+  cout<<"you have choosen this item: "<<CYAN<<bag[i].getName()<<RESET<<" it will be remove in your bag"<<endl;
+*/
+const string Player::getName() const { return name; }
   
-  void Player::turn() {
-    char c = 0;
-    while(true){
-      bool b = false;
-      while(!b){
-	//cin >> c;
-	system("stty raw");
-	c = getchar();
-	system("stty cooked");
-	cout << endl;
-	if(c != 'o' && c != 'k' && c != 'l' && c != 'm' && c != 'h' && c != 'q')
-	  cout << RED << "Wrong command, try again : k(left), o(up), l(down), m(right), h(help), q(quit)\n" << RESET;
-	else 
-	  b = true;
-      }
-      if(c == 'h'){
-	cout << "To move on the game, use the following commands :"<<endl;
-	cout << "\'k\' - left " << endl;
-	cout << "\'o\' - up " << endl;
-	cout << "\'l\' - down " << endl;
-	cout << "\'m\' - right " << endl;
-	cout << "\'q\' - quit " << endl;
-      }else if(c == 'q')
-	exit(0);
-      else //a move
-	move(c);
+void Player::turn() {
+  char c = 0;
+  while(true){
+    bool b = false;
+    while(!b){
+      //cin >> c;
+      system("stty raw");
+      c = getchar();
+      system("stty cooked");
+      cout << endl;
+      if(c != 'o' && c != 'k' && c != 'l' && c != 'm' && c != 'h' && c != 'q')
+	cout << RED << "Wrong command, try again : k(left), o(up), l(down), m(right), h(help), q(quit)\n" << RESET;
+      else 
+	b = true;
     }
+    if(c == 'h'){
+      cout << "To move on the game, use the following commands :"<<endl;
+      cout << "\'k\' - left " << endl;
+      cout << "\'o\' - up " << endl;
+      cout << "\'l\' - down " << endl;
+      cout << "\'m\' - right " << endl;
+      cout << "\'q\' - quit " << endl;
+    }else if(c == 'q')
+      exit(0);
+    else //a move
+      move(c);
   }
+}
 
-  void Player::move(char c){
-    if(c == 'k'){
-      if(j > 0){ //not our of bounds
-	floor->setBoard(i,j-1,*this);
-	setSymbole('<');
-	floor->setBoard(i,j);
-	setJ(j-1);
-      }
-    }else if( c == 'o'){
-      if(i > 0){
-	floor->setBoard(i-1,j,*this);
-	setSymbole('^');
-	floor->setBoard(i,j);
-	setI(i-1);
-      }
-    }else if( c == 'l'){
-      if(i < floor->getN()-1){
-	floor->setBoard(i+1,j,*this);
-	setSymbole('v');
-	floor->setBoard(i,j);
-	setI(i+1);
-      }
-    }else if(c == 'm'){
-      if(j < floor->getM()-1){
-	floor->setBoard(i,j+1,*this);
-	setSymbole('>');
-	floor->setBoard(i,j);
-	setJ(j+1);
-      }
+void Player::move(char c){
+  if(c == 'k'){
+    if(j > 0){ //not out of bounds
+      interact(*floor->getCase(i,j-1));
+      floor->setBoard(i,j-1,*this);
+      setSymbole('<');
+      floor->setBoard(i,j);
+      setJ(j-1);
     }
-      /*case 'l' :
-    case 'm' :*/
-      // default:
-      //    cout <<BOLDRED<< "Error move player, wrong command\n"<<RESET;
-    floor->print();
+  }else if( c == 'o'){
+    if(i > 0){
+      floor->setBoard(i-1,j,*this);
+      setSymbole('^');
+      floor->setBoard(i,j);
+      setI(i-1);
+    }
+  }else if( c == 'l'){
+    if(i < floor->getN()-1){
+      floor->setBoard(i+1,j,*this);
+      setSymbole('v');
+      floor->setBoard(i,j);
+      setI(i+1);
+    }
+  }else if(c == 'm'){
+    if(j < floor->getM()-1){
+      floor->setBoard(i,j+1,*this);
+      setSymbole('>');
+      floor->setBoard(i,j);
+      setJ(j+1);
+    }
   }
+  floor->print();
+}
+
+bool Player::interact(Case & c){
+  if(c.typeOf() == EMPTY)
+    return true;
+  else if(c.typeOf() == ITEM){
+    askUseOrStore((Item&)c);
+  }
+  cout << c.typeOf() << endl;
+}
+
+void Player::askUseOrStore(Item &item){
+  char answer = 0;
+  bool b = true;
+  char c;
+  cout << "Do you want to use(u) " << item.getName() << 
+    " or store(s) it in your bag ?" << endl;
+  while(b){
+    cin >> c;
+    if(c != 'u' && c != 's')
+      cout << RED << "Wrong answer. Press u to use " << item.getName() <<" or s to store it" << endl;
+    else
+      b = false; 
+  }
+  if(c == 'u'){
+    //TODO
+  }
+}

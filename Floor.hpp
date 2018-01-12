@@ -22,6 +22,7 @@ public:
   int getN() const;
   int getM() const;
   Case*** getBoard() const;
+  Case * getCase(const int i, const int j) const;
   void setBoard(const int i, const int j);
   void setBoard(const int i, const int j, Case &c);
 

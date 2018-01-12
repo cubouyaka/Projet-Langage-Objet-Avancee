@@ -13,6 +13,7 @@ Floor::Floor(const Floor &f) : n(f.getN()), m(f.getM()), board(f.getBoard()) {}
 int Floor::getN() const { return n; }
 int Floor::getM() const { return m; }
 Case*** Floor::getBoard() const { return board; }
+Case* Floor::getCase(const int i, const int j) const{ return board[i][j]; }
 void Floor::setBoard(const int i, const int j) { 
   if(0 <= i && i < n && 0 <= j && j < m)
     board[i][j] = new Empty(this,i,j); 

@@ -16,17 +16,12 @@ Item& Item::operator=(const Item &i){
   setName(i.getName());
   pods = i.getPods();
 }
-/*<<<<<<< HEAD
-
-const char * Item::getName() const{ return name; }
-const int Item::getPods() const{ return pods; }
-=======*/
 				       
 string Item::getName() const{ return name; }
 int Item::getPods() const{ return pods; }
 void Item::setPods(const int i){ pods = i; }
 void Item::setName(const string c){ name = c; }
-//>>>>>>> ccafb6b75eb7b2b1f4b4e3593b016536820f6408
+int Item::typeOf() const{ return ITEM; }
 
 void Item::print(){
   cout << 'T';

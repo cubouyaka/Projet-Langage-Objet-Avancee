@@ -22,6 +22,12 @@
 #define BOLDWHITE "\033[1m\033[37m"
 #define RESET "\033[0m"
 
+#define WALL 0
+#define EMPTY 1
+#define MONSTER 2
+#define ITEM 3
+#define PNJ 4
+
 using namespace std;
 
 class Floor;
@@ -54,6 +60,8 @@ public:
   //METHODS
   virtual void turn();
   virtual void print() const;
+  //  virtual void interact(Player * p);
+  virtual int typeOf() const;
 
 };
 

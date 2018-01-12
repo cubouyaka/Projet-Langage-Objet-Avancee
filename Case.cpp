@@ -21,5 +21,7 @@ bool Case::getPlayed() const { return true; }
 
 void Case::turn() {}
 void Case::print() const{ cout << symbole; }
+//void Case::interact(Player & p){ cout << p.getName() << endl; }
+int Case::typeOf() const{ return EMPTY; }
 
 Empty::Empty(Floor * floor, int i, int j) : Case('.',floor,i,j) {}
