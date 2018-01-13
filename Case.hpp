@@ -3,6 +3,8 @@
 #include <iostream>
 #include <stdio.h>
 #include <iomanip>
+#include <stdlib.h>
+#include <time.h>
 
 #include "Floor.hpp"
 
@@ -26,7 +28,8 @@
 #define EMPTY 1
 #define MONSTER 2
 #define ITEM 3
-#define PNJ 4
+#define PLAYER 4
+#define PNJ 5
 
 using namespace std;
 

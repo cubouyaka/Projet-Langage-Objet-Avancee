@@ -10,6 +10,7 @@ public:
 	  char c='M',const int s = 1, int va = 3, Weapon w = DEFAULT_WEAPON,
 	  const Item it = Item(), Floor* f = NULL );
   void print() const;
+  virtual void turn();
 };
 
 #endif
