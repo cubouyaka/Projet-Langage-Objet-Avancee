@@ -9,15 +9,19 @@ People::People(const People &p) :
   resi(p.getResi()), size(p.getSize()), visual_area(p.getVArea()),
   weapon(p.getWeapon()),item(p.getItem()) { played = false;}
 
+People::~People(){
+  //TODO ?
+}
+
 People& People::operator=(const People &p){
   life = p.getLife();
   resi = p.getResi();
   visual_area = p.getVArea();
   weapon = p.getWeapon();
-
-  cout << "REREé"<<endl;
 }
 
+
+const string People::getName() const{};
 bool People::getPlayed() const{ return played; }
 int People::getLife() const { return life; }
 double People::getResi() const { return resi; }
@@ -25,15 +29,21 @@ const int People::getSize() const { return size; }
 int People::getVArea() const { return visual_area; }
 Weapon People::getWeapon() const { return weapon; }
 const Item People::getItem() const { return item; }
+void People::setPlayed(bool b) { played = b; }
 
 void People::setWeapon(Weapon &w) { weapon = w; }
 
 bool People::attacked(const People &p){
-  return (life-=(p.getWeapon().getAttack()*resi)) <= 0;
+  bool b = (life-=(p.getWeapon().getAttack()*resi)) <= 0;
+  cout << p.getName() << " attacked " << getName() <<". Now "<<getName()
+       <<" has " << getLife() <<" hp"<<endl ;
+  
+  return b;
 }
 
 void People::attack(People &p){
-  p.attacked(*this);
+  if(p.attacked(*this))
+    p.die();
   if(weapon.setDurability()){ //if the weapon is over
     cout << BOLDMAGENTA << getWeapon().getName() <<
       " is over, now you're using your hands" << RESET << endl;
@@ -61,5 +71,7 @@ void People::drinkPotion(const ResiUpPotion  &p){ resi += (double)p.getEffect();
 void People::drinkPotion(const ResiDownPotion &p){resi -= (double)p.getEffect();}
 
 void People::die() {
-  //TODO
+  getFloor()->setBoard(getI(),getJ());
+  cout << getName() <<" die in case ("<<getI()<<";"<<getJ()<<")"<<endl;
+  //delete this;
 }

@@ -1,16 +1,9 @@
 #include "Item.hpp"
 
-/*<<<<<<< HEAD
-Item::Item(char s, const char * n, const int p, int i, int j) : Case(s,i,j),
-							       name(n),pods(p) {}
-Item::Item(const Item &i) : Case(i.getSymbole(),i.getI(),i.getJ()),
-			    name(i.getName()), pods(i.getPods()) {}
-=======*/
 Item::Item(Floor* f, char s, string n, int p, int i, int j) : 
   Case(s,f,i,j), name(n), pods(p) {}
 Item::Item(const Item &i) : Case(i.getSymbole(),i.getFloor(), i.getI(),i.getJ()),
 			    name(i.getName()), pods(i.getPods()) {} 
-//>>>>>>> ccafb6b75eb7b2b1f4b4e3593b016536820f6408
 
 Item& Item::operator=(const Item &i){
   setName(i.getName());

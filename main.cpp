@@ -16,8 +16,12 @@ int main(){
   floor.setBoard(0,0,poison);
   Player player(&floor,3,7,"Ida");
   floor.setBoard(3,7,player);
+  Monster monster(1,2);
+  floor.setBoard(1,2,monster);
+  monster.setFloor(&floor);
   floor.print();
   floor.turn();
+  cout << "TRRT"<<endl;
   /*Floor f(10,10);
   Item p;
   for(int i = 0; i < 10 ; i++)

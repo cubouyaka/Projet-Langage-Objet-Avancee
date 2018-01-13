@@ -18,6 +18,7 @@ void Case::setI(int _i){i=_i;}
 void Case::setJ(int _j){j=_j;}
 char Case::getSymbole() const{ return symbole; }
 bool Case::getPlayed() const { return true; }
+void Case::setPlayed(bool b){}
 
 void Case::turn() {}
 void Case::print() const{ cout << symbole; }

@@ -59,6 +59,7 @@ public:
   void setJ(int _j);
   Floor* getFloor() const;
   virtual bool getPlayed() const;
+  virtual void setPlayed(bool b);
 
   //METHODS
   virtual void turn();

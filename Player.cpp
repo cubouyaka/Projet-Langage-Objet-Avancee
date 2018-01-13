@@ -71,41 +71,39 @@ const string Player::getName() const { return name; }
   
 void Player::turn() {
   char c = 0;
-  while(true){
-    bool b = false;
-    while(!b){
-      //cin >> c;
-      system("stty raw");
-      c = getchar();
-      system("stty cooked");
-      cout << endl;
-      if(c != 'o' && c != 'k' && c != 'l' && c != 'm' && c != 'h' && c != 'q')
-	cout << RED << "Wrong command, try again : k(left), o(up), l(down), m(right), h(help), q(quit)\n" << RESET;
-      else 
-	b = true;
-    }
-    if(c == 'h'){
-      cout << "To move on the game, use the following commands :"<<endl;
-      cout << "\'k\' - left " << endl;
-      cout << "\'o\' - up " << endl;
-      cout << "\'l\' - down " << endl;
-      cout << "\'m\' - right " << endl;
-      cout << "\'q\' - quit " << endl;
-    }else if(c == 'q')
-      exit(0);
-    else //a move
-      move(c);
+  bool b = false;
+  while(!b){
+    system("stty raw");
+    c = getchar();
+    system("stty cooked");
+    cout << endl;
+    if(c != 'o' && c != 'k' && c != 'l' && c != 'm' && c != 'h' && c != 'q')
+      cout << RED << "Wrong command, try again : k(left), o(up), l(down), m(right), h(help), q(quit)\n" << RESET;
+    else 
+      b = true;
   }
+  if(c == 'h'){
+    cout << "To move on the game, use the following commands :"<<endl;
+    cout << "\'k\' - left " << endl;
+    cout << "\'o\' - up " << endl;
+    cout << "\'l\' - down " << endl;
+    cout << "\'m\' - right " << endl;
+    cout << "\'q\' - quit " << endl;
+  }else if(c == 'q')
+    exit(0);
+  else //a move
+    move(c);
 }
 
 void Player::move(char c){
   if(c == 'k'){
     if(j > 0){ //not out of bounds
-      interact(*floor->getCase(i,j-1));
-      floor->setBoard(i,j-1,*this);
-      setSymbole('<');
-      floor->setBoard(i,j);
-      setJ(j-1);
+      if(interact(*floor->getCase(i,j-1))){
+	floor->setBoard(i,j-1,*this);
+	setSymbole('<');
+	floor->setBoard(i,j);
+	setJ(j-1);
+      }
     }
   }else if( c == 'o'){
     if(i > 0){
@@ -129,7 +127,7 @@ void Player::move(char c){
       setJ(j+1);
     }
   }
-  floor->print();
+  setPlayed(true);
 }
 
 bool Player::interact(Case & c){
@@ -137,8 +135,11 @@ bool Player::interact(Case & c){
     return true;
   else if(c.typeOf() == ITEM){
     askUseOrStore((Item&)c);
+    return true;
+  }else if(c.typeOf() == MONSTER){
+    attack((People&)c);
+    return false;
   }
-  cout << c.typeOf() << endl;
 }
 
 void Player::askUseOrStore(Item &item){
@@ -148,9 +149,13 @@ void Player::askUseOrStore(Item &item){
   cout << "Do you want to use(u) " << item.getName() << 
     " or store(s) it in your bag ?" << endl;
   while(b){
-    cin >> c;
+    system("stty raw");
+    c = getchar();
+    system("stty cooked");
+    cout << endl;
     if(c != 'u' && c != 's')
-      cout << RED << "Wrong answer. Press u to use " << item.getName() <<" or s to store it" << endl;
+      cout << RED << "Wrong answer. Press u to use " << item.getName()
+	   <<" or s to store it" << RESET << endl;
     else
       b = false; 
   }

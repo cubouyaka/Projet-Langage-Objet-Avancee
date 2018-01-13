@@ -25,6 +25,7 @@ public:
   Case * getCase(const int i, const int j) const;
   void setBoard(const int i, const int j);
   void setBoard(const int i, const int j, Case &c);
+  void endTurn();
 
   //METHODS
   void turn();
