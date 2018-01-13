@@ -31,6 +31,8 @@
 #define ITEM 3
 #define PLAYER 4
 #define PNJ 5
+#define WEAPON 6
+
 
 using namespace std;
 

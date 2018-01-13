@@ -4,8 +4,8 @@ People::People(Floor* f,int i, int j, char s, int l,double r, const int S,int va
 	       Weapon w,const Item it) : Case(s,f,i,j), life(l), resi(r),
 					 size(S), visual_area(va), weapon(w),
 					 item(it){ played = false; }
-People::People(const People &p) : 
-  Case(p.getSymbole(),p.getFloor(),p.getI(),p.getJ()),life(p.getLife()), 
+People::People(const People &p) :
+  Case(p.getSymbole(),p.getFloor(),p.getI(),p.getJ()),life(p.getLife()),
   resi(p.getResi()), size(p.getSize()), visual_area(p.getVArea()),
   weapon(p.getWeapon()),item(p.getItem()) { played = false;}
 
@@ -37,7 +37,7 @@ bool People::attacked(const People &p){
   bool b = (life-=(p.getWeapon().getAttack()*resi)) <= 0;
   cout << p.getName() << " attacked " << getName() <<". Now "<<getName()
        <<" has " << getLife() <<" hp"<<endl ;
-  
+
   return b;
 }
 
@@ -72,6 +72,13 @@ void People::drinkPotion(const ResiDownPotion &p){resi -= (double)p.getEffect();
 
 void People::die() {
   getFloor()->setBoard(getI(),getJ());
-  cout << getName() <<" die in case ("<<getI()<<";"<<getJ()<<")"<<endl;
-  //delete this;
+  if (typeOf()==PLAYER) {
+		cout << getName() <<" YOU LOSE , die in case ("<<getI()<<";"<<getJ()<<")"<<endl;
+	  exit(0);
+  }
+	else
+	{
+
+	  cout << getName() <<" die in case ("<<getI()<<";"<<getJ()<<")"<<endl;
+	}
 }

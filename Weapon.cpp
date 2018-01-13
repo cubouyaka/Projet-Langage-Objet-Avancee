@@ -15,6 +15,7 @@ Weapon& Weapon::operator=(const Weapon &w){
 	durability=w.getDurability();
 	setName(w.getName());
 }
+int Weapon::typeOf() const{ return WEAPON; }
 
 const int Weapon::getAttack() const{ return attack; }
 const int Weapon::getScope() const{ return scope; }

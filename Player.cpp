@@ -1,7 +1,7 @@
 #include "Player.hpp"
 
-Player::Player(Floor* f, int i, int j, const string n, int l, const double r, 
-	       const int s, int va, const Weapon w) : 
+Player::Player(Floor* f, int i, int j, const string n, int l, const double r,
+	       const int s, int va, const Weapon w) :
   People(f,i,j,'>',l,r,s,va,w), name(n){}
 
 void Player::setSymbole(char s){ symbole = s; }
@@ -11,9 +11,14 @@ void Player::print() const {
 }
 //methode pour regarder les elements du joueur
 void Player::lookbag()const{
-  for(int i(0); i<bag.size(); i++)
-    cout << bag[i].getName() << "| ";
-  cout <<endl;
+	if(bag.size()<=0)
+    cout <<BOLDCYAN<<"your bag is empty"<<RESET<<endl;
+  else {
+		cout <<BOLDCYAN<<"your bag contains : "<<RESET<<endl;
+		for(int i(0); i<bag.size(); i++)
+    cout <<BOLDCYAN<< bag[i].getName() << "| ";
+		cout<<RESET <<endl;
+	}
 }
 //methode pour ajouter des elements dans le sac on regardesi le sac n'est pas plein on ajoute sinon on doit supprimer un item
 void Player::Add_item_bag( Item &item) const{
@@ -68,7 +73,7 @@ void Player::remove_item_bag( ){
   cout<<"you have choosen this item: "<<CYAN<<bag[i].getName()<<RESET<<" it will be remove in your bag"<<endl;
 */
 const string Player::getName() const { return name; }
-  
+
 void Player::turn() {
   char c = 0;
   bool b = false;
@@ -77,9 +82,9 @@ void Player::turn() {
     c = getchar();
     system("stty cooked");
     cout << endl;
-    if(c != 'o' && c != 'k' && c != 'l' && c != 'm' && c != 'h' && c != 'q')
-      cout << RED << "Wrong command, try again : k(left), o(up), l(down), m(right), h(help), q(quit)\n" << RESET;
-    else 
+    if(c != 'o' && c != 'k' && c != 'l' && c != 'm' && c != 'h' && c != 'q' && c!='i' && c!='w')
+      cout << RED << "Wrong command, try again : k(left), o(up), l(down), m(right),i(list_of_item),h(help), q(quit)\n" << RESET;
+    else
       b = true;
   }
   if(c == 'h'){
@@ -89,7 +94,14 @@ void Player::turn() {
     cout << "\'l\' - down " << endl;
     cout << "\'m\' - right " << endl;
     cout << "\'q\' - quit " << endl;
-  }else if(c == 'q')
+		cout << "\'i\' - list of your Item " << endl;
+		cout << "\'w\' - your Weapon " << endl;
+  }
+	else if (c=='i')
+		lookbag();
+	else if (c=='w')
+		cout << RED << "the weapon you use is: "<<getWeapon().getName()<<RESET<<endl;
+	else if(c == 'q')
     exit(0);
   else //a move
     move(c);
@@ -133,7 +145,7 @@ void Player::move(char c){
 bool Player::interact(Case & c){
   if(c.typeOf() == EMPTY)
     return true;
-  else if(c.typeOf() == ITEM){
+  else if(c.typeOf() == ITEM or c.typeOf()==WEAPON){
     askUseOrStore((Item&)c);
     return true;
   }else if(c.typeOf() == MONSTER){
@@ -146,7 +158,7 @@ void Player::askUseOrStore(Item &item){
   char answer = 0;
   bool b = true;
   char c;
-  cout << "Do you want to use(u) " << item.getName() << 
+  cout << "Do you want to use(u) " << item.getName() <<
     " or store(s) it in your bag ?" << endl;
   while(b){
     system("stty raw");
@@ -157,11 +169,22 @@ void Player::askUseOrStore(Item &item){
       cout << RED << "Wrong answer. Press u to use " << item.getName()
 	   <<" or s to store it" << RESET << endl;
     else
-      b = false; 
+      b = false;
   }
-  if(c == 'u'){
-    //TODO
+  if(c == 's'){
+    Add_item_bag(item);
   }
+	else {//ces conditions cté just pour tester si le changement de weapon marche
+		/*if(item.typeOf()==WEAPON)
+		{
+			cout << RED << "you use " <<item.getName()<<" Now"<< endl;
+			setWeapon((Weapon &)item);
+		}
+		else{
+			cout << GREEN << "to use " <<item.getName()<< endl;
+		}*/
+		
+	}
 }
 
 int Player::typeOf() const{ return PLAYER; }

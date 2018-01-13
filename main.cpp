@@ -25,6 +25,8 @@ int main(){
   Monster monster3(7,6);
   floor.setBoard(7,6,monster3);
   monster3.setFloor(&floor);
+  Weapon fireBall(15,-1,5,'B',"FireBall");
+  floor.setBoard(2,5,fireBall);
   floor.print();
   floor.turn();
   cout << "TRRT"<<endl;
