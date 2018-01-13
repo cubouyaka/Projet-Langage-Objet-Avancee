@@ -163,3 +163,5 @@ void Player::askUseOrStore(Item &item){
     //TODO
   }
 }
+
+int Player::typeOf() const{ return PLAYER; }

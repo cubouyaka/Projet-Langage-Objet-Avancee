@@ -26,20 +26,35 @@ void Monster::turn(){
 	   getFloor()->getCase(i,j+1)->typeOf() == PLAYER)
     attack((People&)*getFloor()->getCase(i,j+1));
   else{
-    //move();
+    cout << "MONSTER : Personne autour" << endl;
+    move();
   }
 }
 
 void Monster::move(){
-  /*
   //move randomly around
+  int ii,jj;
   srand (time(NULL));
-  int random = (int)(rand() % 4);
-  if(random == 0)
-    //
-   else if(random == 1)
-   else if(random == 2)
-   else // random == 3
-  */
+  do{
+    ii = getI();
+    jj = getJ();
+    int random = (int)(rand() % 4);
+    if(random == 0 && ii > 0)
+      ii = ii-1;
+    else if(random == 1 && j > 0)
+      jj = jj-1;
+    else if(random == 2 && ii+1 < getFloor()->getN())
+      ii = ii+1;
+    else if(random == 3 && jj+1 < getFloor()->getM())
+      jj = jj+1;
+  }while(floor->getCase(ii,jj)->typeOf() != EMPTY);
+
+  floor->setBoard(ii,jj,*this);
+  floor->setBoard(getI(),getJ());
+  setI(ii);
+  setJ(jj);
+
+  setPlayed(true);
 }
+
 int Monster::typeOf() const{ return MONSTER; }

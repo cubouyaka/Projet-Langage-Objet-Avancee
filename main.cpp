@@ -19,6 +19,12 @@ int main(){
   Monster monster(1,2);
   floor.setBoard(1,2,monster);
   monster.setFloor(&floor);
+  Monster monster2(3,2);
+  floor.setBoard(3,2,monster2);
+  monster2.setFloor(&floor);
+  Monster monster3(7,6);
+  floor.setBoard(7,6,monster3);
+  monster3.setFloor(&floor);
   floor.print();
   floor.turn();
   cout << "TRRT"<<endl;

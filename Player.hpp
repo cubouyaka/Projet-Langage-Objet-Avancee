@@ -19,6 +19,7 @@ public:
   void setSymbole(char s);
   const string getName() const;
 
+  int typeOf() const;
   void turn(); //one turn of the player
   void move(char c);
   bool interact(Case & c);

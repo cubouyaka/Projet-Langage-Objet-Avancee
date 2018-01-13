@@ -5,6 +5,7 @@
 #include <iomanip>
 #include <stdlib.h>
 #include <time.h>
+#include <unistd.h>
 
 #include "Floor.hpp"
 
