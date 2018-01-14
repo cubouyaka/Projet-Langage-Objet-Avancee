@@ -1,0 +1,17 @@
+# - wall
+. - empty
+X - source
+</>/^/v - player
+H - healing potion
+h - posion
+R - potion resi up
+r - potion resi down
+? - unknown object
+m - monster
+M - monster2
+w - warrior
+W - warrior2
+n - ninja
+N - ninja2
+c - cavalier
+C - cavalier2
