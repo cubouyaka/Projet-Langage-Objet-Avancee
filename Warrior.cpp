@@ -44,7 +44,7 @@ void Warrior::move(){
 			       || floor->getCase(i,j-1)->typeOf() == PLAYER))
       jj = j-1;
     else if(i-1 >= 0 && i-1 < n && (floor->getCase(i-1,j)->typeOf() == EMPTY
-				    || floor->getCase(i-1,j)->typeOf() == PLAYER))
+				    ||floor->getCase(i-1,j)->typeOf() == PLAYER))
       ii = i-1;
     else
       return Monster::move();
@@ -53,7 +53,7 @@ void Warrior::move(){
 			       || floor->getCase(i+1,j)->typeOf() == PLAYER))
       ii = i+1;
     else if(j+1 >= 0 && j+1 < m && (floor->getCase(i,j+1)->typeOf() == EMPTY
-				    || floor->getCase(i,j+1)->typeOf() == PLAYER))
+				    ||floor->getCase(i,j+1)->typeOf() == PLAYER))
       jj = j+1;
     else
       return Monster::move();
@@ -62,7 +62,7 @@ void Warrior::move(){
 			       || floor->getCase(i-1,j)->typeOf() == PLAYER))
       ii = i-1;
     else if(j+1 >= 0 && j+1 < m && (floor->getCase(i,j+1)->typeOf() == EMPTY
-				    || floor->getCase(i,j+1)->typeOf() == PLAYER))
+				    ||floor->getCase(i,j+1)->typeOf() == PLAYER))
       jj = j+1;
     else
       return Monster::move();
@@ -71,7 +71,7 @@ void Warrior::move(){
 			       || floor->getCase(i,j+1)->typeOf() == PLAYER))
       jj = j+1;
     else if(i+1 >= 0 && i+1 < n && (floor->getCase(i+1,j)->typeOf() == EMPTY
-				    || floor->getCase(i+1,j)->typeOf() == PLAYER))
+				    ||floor->getCase(i+1,j)->typeOf() == PLAYER))
       ii = i+1;
     else
       return Monster::move();
@@ -94,6 +94,14 @@ void Warrior::move(){
   }
 }
 
+//WARRIOR2
+Warrior2::Warrior2(int i, int j, int l, const double r,char c, const int s, 
+		   int va, const Weapon w, const Item it) : 
+  Warrior(i,j,l,r,c,s,va,w,it){}
+
+void Warrior::print() const { 
+  cout << BOLDRED <<  symbole << RESET;
+}
 
 //NINJA
 Ninja::Ninja(int i, int j, int l, const double r, const int s, int va,
