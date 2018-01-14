@@ -8,7 +8,7 @@ Monster(int i = -1, int j = -1, int l = MAX_LIFE, const double r = 1,
 	  char c='m',const int s = 1, int va = 3, Weapon w = DEFAULT_WEAPON,
 	  const Item it = Item(), Floor* f = NULL );
   
-const string getName() const;
+virtual const string getName() const;
 void setFloor(Floor *f);
   
 
@@ -26,6 +26,7 @@ Monster2(int i = -1, int j = -1, int l = MAX_LIFE2, const double r = 1,
 	  const Item it = Item(), Floor* f = NULL );
 
   void print() const;
+  const string getName() const;
 };
 
 #endif

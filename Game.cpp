@@ -11,5 +11,6 @@ void Game::setFloor(int n, Floor* f){ floors[n] = f; }
 
 void Game::play(){ 
   floors[i_current_floor]->turn();
+  cout << "------------------------------------------------"<<endl;
   nb_tours++;
 }

@@ -175,7 +175,7 @@ bool Player::interact(Case & c){
 
 bool Player::healSource(){
   life = MAX_LIFE_PLAYER;
-  cout << BOLDGREEN << "Thanks to the source, you get your all life ("
+  cout << BOLDGREEN << "Thanks to the source, you get full life ("
        <<life<<"hp"<<")"<<RESET<<endl;  
   return false;
 }
