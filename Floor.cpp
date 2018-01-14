@@ -19,16 +19,15 @@ void Floor::setBoard(const int i, const int j) {
     board[i][j] = new Empty(this,i,j);
   //TODO else: out of bounds
 }
-<<<<<<< HEAD
+void Floor::setBoard(const int i, const int j,char c) {
+  if(0 <= i && i < getN() && 0 <= j && j < getM())
+    board[i][j] = new Wall(this,i,j);
+  //TODO else: out of bounds
+}
 void Floor::setBoard(const int i, const int j, Case &c) {
   if(0 <= i && i < n && 0 <= j && j < m)
     board[i][j] = &c;
   //TODO else: out of bounds
-=======
-void Floor::setBoard(const int i, const int j, Case &c) { 
-  if(0 <= i && i < n && 0 <= j && j < m) //else out of bounds
-    board[i][j] = &c; 
->>>>>>> 98a9b99bc6467e71ca07986b1de5f0c9cea9a46f
 }
 
 void Floor::turn() {
@@ -45,15 +44,15 @@ void Floor::endTurn(){
   for(int i = 0; i < n; i++)
     for(int j = 0; j<m; j++)
       board[i][j]->setPlayed(false);
-} 
+}
 
 void Floor::print() const{
-  cout << endl <<'+'<< setfill('-') << setw(m+1) << '+' << endl;
+  //cout << endl <<'+'<< setfill('-') << setw(m+1) << '+' << endl;
   for(int i = 0; i < n; i++){
-    cout << '|';
+  //  cout << '|';
     for(int j = 0; j < m; j++)
       board[i][j]->print();
-    cout << '|' <<  endl;
+    cout  <<  endl;
   }
-  cout <<'+'<< setfill('-') << setw(m+1) << '+' << endl;
+  //cout <<'+'<< setfill('-') << setw(m+1) << '+' << endl;
 }

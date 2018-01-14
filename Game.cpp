@@ -19,11 +19,20 @@ void Game::play(){
     ifstream file(fichier.c_str(), ios::in);  // on ouvre en lecture
     if(file)  // si l'ouverture a fonctionné
     {
+
       string contenu;  // déclaration d'une chaîne qui contiendra la ligne lue
             // on met dans "contenu" la ligne
       while(getline(file, contenu)){
+
         for(int j=0; j<contenu.size(); j++)
           {
+
+            if(contenu[i]=='.')
+              floors[0]->setBoard(i,j);
+            if(contenu[i]=='#')
+              floors[0]->setBoard(i,j,'#');
+              if(contenu[i]==' ')
+                floors[0]->setBoard(i,j,' ');
             if (contenu[j]=='C')
               {
                 Cavalier cav(i,j);
@@ -88,6 +97,7 @@ void Game::play(){
       }
 
       file.close();
+      floors[0]->print();
     }
     else
             cerr << "Impossible d'ouvrir le fichier !" << endl;

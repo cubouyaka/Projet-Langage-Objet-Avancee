@@ -12,7 +12,7 @@ using namespace std;
 
 int main(){
   srand (time(NULL));
-  Floor floor(15,10);
+  /*Floor floor(15,10);
   Posion poison(10);
   floor.setBoard(0,0,poison);
   Warrior warrior(2,7);
@@ -37,14 +37,15 @@ int main(){
   floor.setBoard(2,2,wall);
 
   Source source;
-  floor.setBoard(7,8,source);
+  floor.setBoard(7,8,source);*/
   /*
   Weapon fireBall(15,-1,5,'B',"FireBall");
   floor.setBoard(2,5,fireBall);*/
-  Weapon Shuriken (10,10,5,'?',"Shuriken");
+  /*Weapon Shuriken (10,10,5,'?',"Shuriken");
   floor.setBoard(7,3,Shuriken);
   Weapon sword(15,20,1,'S',"Sword II");
-  floor.setBoard(8,7,sword);
+  floor.setBoard(8,7,sword);*/
+  Floor floor(18,10);
   Game game(1);
   game.setFloor(0,&floor);
   string toto="fichier.txt";
