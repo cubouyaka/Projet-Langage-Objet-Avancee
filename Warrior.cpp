@@ -99,7 +99,7 @@ Warrior2::Warrior2(int i, int j, int l, const double r,char c, const int s,
 		   int va, const Weapon w, const Item it) : 
   Warrior(i,j,l,r,c,s,va,w,it){}
 
-void Warrior::print() const { 
+void Warrior2::print() const { 
   cout << BOLDRED <<  symbole << RESET;
 }
 

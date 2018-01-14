@@ -22,12 +22,10 @@ public:
 //Class Warrior II
 class Warrior2 : public Warrior {
 public:
-  Warrior2(int i = -1, int j = -1, int l = MAX_LIFE*2, const double r = 1,
+  Warrior2(int i = -1, int j = -1, int l = MAX_LIFE2, const double r = 1,
 	     char c = 'W',const int s = 1, int va = SCOPE_WARRIOR2, 
 	     const Weapon w = SWORD2, const Item it = Item());
   void print() const;
-  virtual void turn();
-  virtual void move();
 };
 //Class Ninja
 class Ninja : public Warrior {
