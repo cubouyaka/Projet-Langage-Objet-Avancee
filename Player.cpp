@@ -125,7 +125,7 @@ void Player::move(char c){
       }
     }
   }else if( c == 'o'){
-    if(i > 0){
+    if(i > 0 && floor->getCase(i-1,j)->typeOf() != WALL){
       if(interact(*floor->getCase(i-1,j))){
 	floor->setBoard(i-1,j,*this);
 	setSymbole('^');
@@ -158,6 +158,8 @@ void Player::move(char c){
 bool Player::interact(Case & c){
   if(c.typeOf() == EMPTY)
     return true;
+  else if(c.typeOf() == SOURCE)
+    return healSource();
   else if(c.typeOf() == ITEM)
     return false;
   else if(c.typeOf()==WEAPON){
@@ -169,6 +171,13 @@ bool Player::interact(Case & c){
     attack((People&)c);
     return false;
   }
+}
+
+bool Player::healSource(){
+  life = MAX_LIFE_PLAYER;
+  cout << BOLDGREEN << "Thanks to the source, you get your all life ("
+       <<life<<"hp"<<")"<<RESET<<endl;  
+  return false;
 }
 
 bool Player::askUseOrStore(Potion &potion){

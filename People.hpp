@@ -4,8 +4,8 @@
 #include "Potion.hpp"
 #include <stdlib.h>
 
-#define MAX_LIFE 10
-#define MAX_LIFE2 30
+#define MAX_LIFE 50
+#define MAX_LIFE2 100
 #define MAX_LIFE_PLAYER 500
 #define DEFAULT_WEAPON Weapon(5,-1,1,'?',"Hands",0)
 

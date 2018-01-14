@@ -35,6 +35,7 @@ public:
   void askUseOrStore(Weapon &weapon);
   bool askUseOrStore(Potion &potion);
   void use(Potion &p);
+  bool healSource(); //get all your life back thanks to the source
 };
 
 #endif
