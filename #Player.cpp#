@@ -11,14 +11,14 @@ void Player::print() const {
 }
 //methode pour regarder les elements du joueur
 void Player::lookbag()const{
-	if(bag.size()<=0)
+  if(bag.size()<=0)
     cout <<BOLDCYAN<<"your bag is empty"<<RESET<<endl;
   else {
-		cout <<BOLDCYAN<<"your bag contains : "<<RESET<<endl;
-		for(int i(0); i<bag.size(); i++)
-    cout <<BOLDCYAN<< bag[i].getName() << "| ";
-		cout<<RESET <<endl;
-	}
+    cout <<BOLDCYAN<<"your bag contains : "<<RESET<<endl;
+    for(int i(0); i<bag.size(); i++)
+      cout <<BOLDCYAN<< bag[i].getName() << "| ";
+    cout<<RESET <<endl;
+  }
 }
 //methode pour ajouter des elements dans le sac on regardesi le sac n'est pas plein on ajoute sinon on doit supprimer un item
 void Player::Add_item_bag( Item &item) const{
@@ -94,14 +94,14 @@ void Player::turn() {
     cout << "\'l\' - down " << endl;
     cout << "\'m\' - right " << endl;
     cout << "\'q\' - quit " << endl;
-		cout << "\'i\' - list of your Item " << endl;
-		cout << "\'w\' - your Weapon " << endl;
+    cout << "\'i\' - list of your Item " << endl;
+    cout << "\'w\' - your Weapon " << endl;
   }
-	else if (c=='i')
-		lookbag();
-	else if (c=='w')
-		cout << RED << "the weapon you use is: "<<getWeapon().getName()<<RESET<<endl;
-	else if(c == 'q')
+  else if (c=='i')
+    lookbag();
+  else if (c=='w')
+    cout << RED << "the weapon you use is: "<<getWeapon().getName()<<RESET<<endl;
+  else if(c == 'q')
     exit(0);
   else //a move
     move(c);
@@ -180,17 +180,17 @@ void Player::askUseOrStore(Item &item){
   if(c == 's'){
     Add_item_bag(item);
   }
-	else {//ces conditions cté just pour tester si le changement de weapon marche
-		/*if(item.typeOf()==WEAPON)
-		{
-			cout << RED << "you use " <<item.getName()<<" Now"<< endl;
-			setWeapon((Weapon &)item);
-		}
-		else{
-			cout << GREEN << "to use " <<item.getName()<< endl;
-		}*/
+  else {//ces conditions cté just pour tester si le changement de weapon marche
+    /*if(item.typeOf()==WEAPON)
+      {
+      cout << RED << "you use " <<item.getName()<<" Now"<< endl;
+      setWeapon((Weapon &)item);
+      }
+      else{
+      cout << GREEN << "to use " <<item.getName()<< endl;
+      }*/
 		
-	}
+  }
 }
 
 int Player::typeOf() const{ return PLAYER; }

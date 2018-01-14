@@ -6,10 +6,13 @@
 //Class Warrior
 class Warrior : public Monster {
 public:
+  int scope;
   Warrior(int i = -1, int j = -1, int l = MAX_LIFE, const double r = 1,
 	  char c = 'W',const int s = 1, int va = 3, const Weapon w = DEFAULT_WEAPON,
 	  const Item it = Item());
   void print() const;
+  virtual void turn();
+  virtual void move();
 };
 //Class Ninja
 class Ninja : public Warrior {

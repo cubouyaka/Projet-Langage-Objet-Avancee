@@ -14,6 +14,9 @@ int main(){
   Floor floor(15,10);
   Posion poison(10);
   floor.setBoard(0,0,poison);
+  Warrior warrior(2,7);
+  floor.setBoard(2,7,warrior);
+  warrior.setFloor(&floor);
   Player player(&floor,3,7,"Ida");
   floor.setBoard(3,7,player);
   Monster monster(1,2);

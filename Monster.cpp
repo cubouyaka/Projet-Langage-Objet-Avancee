@@ -25,10 +25,8 @@ void Monster::turn(){
   else if(0 <= i && i < n && 0 <= j+1 && j+1 < m &&
 	   getFloor()->getCase(i,j+1)->typeOf() == PLAYER)
     attack((People&)*getFloor()->getCase(i,j+1));
-  else{
-    cout << "MONSTER : Personne autour" << endl;
+  else
     move();
-  }
 }
 
 void Monster::move(){
