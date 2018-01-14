@@ -9,6 +9,10 @@
 #define SCOPE_NINJA2 6
 
 #define SCOPE_CAVA 2
+#define SCOPE_CAVA2 3
+
+#define SCOPE_MAGICIAN 3
+#define SCOPE_MAGICIAN2 4
 
 //Class Warrior
 class Warrior : public Monster {
@@ -54,8 +58,35 @@ public:
 class Cavalier : public Warrior{
 public:
   Cavalier(int i = -1, int j = -1, int l = MAX_LIFE, const double r = 1,
-	   const int s = 2, int va = SCOPE_CAVA, const Weapon w = DEFAULT_WEAPON,
-	   const Item it = Item());
+	     char c = 'c', const int s = 2, int va = SCOPE_CAVA,
+	     const Weapon w = SWORD, const Item it = Item());
+
+void move();
+};
+
+//Class Cavalier2
+class Cavalier2 : public Cavalier{
+public:
+  Cavalier2(int i = -1, int j = -1, int l = MAX_LIFE2, const double r = 2,
+	     char c = 'C', const int s = 2, int va = SCOPE_CAVA2, 
+	     const Weapon w = SWORD2, const Item it = Item());
+void print() const;
+};
+
+//Class Magician
+class Magician : public Warrior{
+public:
+  Magician(int i = -1, int j = -1, int l = MAX_LIFE, const double r = 2,
+	     char c = 'm', const int s = 2, int va = SCOPE_MAGICIAN, 
+	     const Weapon w = SCEPTER, const Item it = Item());
+};
+
+//Class Magician2
+class Magician2 : public Magician{
+public:
+  Magician2(int i = -1, int j = -1, int l = MAX_LIFE2, const double r = 2,
+	      char c = 'M', const int s = 2, int va = SCOPE_MAGICIAN2, 
+	      const Weapon w = SCEPTER2, const Item it = Item());
   void print() const;
 };
 
