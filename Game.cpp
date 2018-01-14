@@ -27,70 +27,72 @@ void Game::play(){
         for(int j=0; j<contenu.size(); j++)
           {
 
-            if(contenu[i]=='.')
+            if(contenu[j]=='.')
               floors[0]->setBoard(i,j);
-            if(contenu[i]=='#')
+          else  if(contenu[j]=='#')
               floors[0]->setBoard(i,j,'#');
-              if(contenu[i]==' ')
-                floors[0]->setBoard(i,j,' ');
-            if (contenu[j]=='C')
+
+            else if (contenu[j]=='C')
               {
                 Cavalier cav(i,j);
                 floors[0]->setBoard(i,j,cav);
-            }
-            if (contenu[j]=='N')
+                cav.setFloor(floors[0]);
+              }
+          else   if (contenu[j]=='N')
               {
                 Ninja ninja(i,j);
                 floors[0]->setBoard(i,j,ninja);
-            }
-            if (contenu[j]=='m')
+                ninja.setFloor(floors[0]);
+              }
+          else  if (contenu[j]=='m')
               {
                 Monster monster(i,j);
                 floors[0]->setBoard(i,j,monster);
-            }
-            if (contenu[j]=='h')
+                monster.setFloor(floors[0]);
+              }
+            else if (contenu[j]=='h')
               {
                 Posion posion(i+10);
                 floors[0]->setBoard(i,j,posion);
               }
-              if (contenu[j]=='H')
-                {
+            else if (contenu[j]=='H')
+              {
                   HealingPotion healposion(i+5);
                   floors[0]->setBoard(i,j,healposion);
-                }
-                if (contenu[j]=='R')
-                  {
+              }
+          else if (contenu[j]=='R')
+            {
                     ResiUpPotion residup(i+5);
                     floors[0]->setBoard(i,j,residup);
-                  }
-                  if (contenu[j]=='r')
-                    {
-                      ResiDownPotion resdown(i);
-                      floors[0]->setBoard(i,j,resdown);
-                    }
-              if (contenu[j]=='I' or contenu[j]=='?' )
-                {
-                  Item item(floors[0],contenu[j]);
-                  floors[0]->setBoard(i,j,item);
-                }
-                if (contenu[j]=='W')
-                  {
-                    Warrior warrior(i,j);
-                    floors[0]->setBoard(i,j,warrior);
-                    warrior.setFloor(floors[0]);
-                  }
-              if (contenu[j]=='w')
-                {
-                  Weapon weapon(i+5,j,'w');
-                  floors[0]->setBoard(i,j,weapon);
-                }
-                if (contenu[j]=='<'|| contenu[j]=='>' ||contenu[j]=='^'||contenu[j]=='v')
-                 {
-                   Player player(floors[0],i,j,"Ida");
+            }
+        else  if (contenu[j]=='r')
+            {
+              ResiDownPotion resdown(i);
+              floors[0]->setBoard(i,j,resdown);
+            }
+        else  if (contenu[j]=='I' or contenu[j]=='?' )
+            {
+              Item item(floors[0],contenu[j]);
+              floors[0]->setBoard(i,j,item);
+            }
+          else  if (contenu[j]=='W')
+              {
+                Warrior warrior(i,j);
+                floors[0]->setBoard(i,j,warrior);
+                warrior.setFloor(floors[0]);
+              }
+        else  if (contenu[j]=='w')
+            {
+              Weapon weapon(i+5,j,'w');
+              floors[0]->setBoard(i,j,weapon);
+            }
+            else if (contenu[j]=='<'|| contenu[j]=='>' ||contenu[j]=='^'||contenu[j]=='v')
+             {
+               Player player(floors[0],i,j,"Ida");
 
-                    floors[0]->setBoard(i,j,player);
-                  }
-
+                floors[0]->setBoard(i,j,player);
+              }
+            
           }
           cout<<endl;
           i++;
