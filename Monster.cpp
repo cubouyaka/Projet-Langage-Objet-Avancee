@@ -55,7 +55,8 @@ void Monster::move(){
     else if(random == 3 && jj+1 < getFloor()->getM())
       jj = jj+1;
   }while(floor->getCase(ii,jj)->typeOf() != EMPTY && emptyAround(i,j));
-
+  if(floor->getCase(ii,jj)->typeOf() != EMPTY && !emptyAround(i,j))
+    return;
   floor->setBoard(ii,jj,*this);
   floor->setBoard(getI(),getJ());
   setI(ii);
