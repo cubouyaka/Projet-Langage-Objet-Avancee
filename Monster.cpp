@@ -63,3 +63,10 @@ void Monster::move(){
 }
 
 int Monster::typeOf() const{ return MONSTER; }
+
+
+Monster2::Monster2(int i, int j, int l, const double r, char c, const int s, 
+		   int va, Weapon w, const Item it, Floor* f) :
+  Monster(i,j,l,r,c,s,va,w,it,f){}
+
+void Monster2::print() const{ cout << BOLDRED << symbole << RESET;}
