@@ -22,13 +22,79 @@ void Warrior::move(){
   int j = getJ();
   int n = getFloor()->getN();
   int m = getFloor()->getM();
-  int x,y;
+  int xx,yy;
+  int ii = i, jj = j;
+  bool b = false;
+  
+  for(int x = i-scope; x <= i+scope; x++){
+    for(int y = j-(scope-abs(i-x)); y <= j+(scope-abs(i-x)); y++){
+      if(0 <= x && x < n && 0 <= y && y < m){
+	if(getFloor()->getCase(x,y)->typeOf() == PLAYER){
+	  b = true;
+	  xx = x;
+	  yy = y;
+	}
+      }
+    }
+  }
 
-  for(int x = i-scope; x <= i+scope; x++)
-    for(int y = j-(scope-abs(i-x)); y <= j+(scope-abs(i-x)); y++)
-      if(0 <= x && x < n && 0 <= y && y < m)
-	if(getFloor()->getCase(x,y)->typeOf() == PLAYER)
-	  cout <<x<< ";"<<y<<endl;
+  if(!b)
+    return Monster::move();
+
+  do{
+    if(xx <= i && yy < j){
+      cout << "CAS 0" << endl;
+      if(j-1 >= 0 && j-1 < m && floor->getCase(i,j-1)->typeOf() == EMPTY)
+	jj = j-1;
+      else if(i-1 >= 0 && i-1 < n && floor->getCase(i-1,j)->typeOf() == EMPTY)
+	ii = i-1;
+      else
+	Monster::move();
+    }else if(xx > i && yy <= j){
+      cout << "CAS 1" << endl;
+      if(i+1 >= 0 && i+1 < n && floor->getCase(i+1,j)->typeOf() == EMPTY)
+	ii = i+1;
+      else if(j+1 >= 0 && j+1 < m && floor->getCase(i,j+1)->typeOf() == EMPTY)
+	jj = j+1;
+      else
+	Monster::move();
+    }else if(xx < i && yy >= j){
+      cout << "CAS 2" << endl;
+      if(i-1 >= 0 && i-1 < n && floor->getCase(i-1,j)->typeOf() == EMPTY)
+	ii = i-1;
+      else if(j+1 >= 0 && j+1 < m && floor->getCase(i,j+1)->typeOf() == EMPTY)
+	jj = j+1;
+      else
+	Monster::move();
+    }else if(xx >= i && yy > j){
+      cout << "CAS 3" << endl;
+      if(j+1 >= 0 && j+1 < m && floor->getCase(i,j+1)->typeOf() == EMPTY)
+	jj = j+1;
+      else if(i+1 >= 0 && i+1 < n && floor->getCase(i+1,j)->typeOf() == EMPTY)
+	ii = i+1;
+      else
+	Monster::move();
+    }
+
+    if(ii >= 0 && ii < n && jj >= 0 && jj < m){
+      if(getFloor()->getCase(ii,jj)->typeOf() == PLAYER){
+	attack((People&)*getFloor()->getCase(ii,jj));
+	setPlayed(true);
+	return;
+      }
+      else if(getFloor()->getCase(ii,jj)->typeOf() == EMPTY){
+	floor->setBoard(ii,jj,*this);
+	floor->setBoard(getI(),getJ());
+	setI(ii);
+	setJ(jj);
+	setPlayed(true);
+	return;
+      }
+    }
+    cout << i << ";"<< j<<endl;
+    cout << ii << ";"<< jj<<endl;
+    sleep(2);
+  }while(emptyAround(i,j));
 }
 
 

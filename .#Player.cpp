@@ -1,1 +1,0 @@
-cubouyaka@cubouyaka-Inspiron-5520.12743:1515760041

@@ -11,34 +11,34 @@ void Player::print() const {
 }
 //methode pour regarder les elements du joueur
 void Player::lookbag()const{
-	if(bag.size()<=0)
+  if(bag.size()<=0)
     cout <<BOLDCYAN<<"your bag is empty"<<RESET<<endl;
   else {
-		cout <<BOLDCYAN<<"your bag contains : "<<RESET<<endl;
-		for(int i(0); i<bag.size(); i++)
-    cout <<BOLDCYAN<< bag[i].getName() << "| ";
-		cout<<RESET <<endl;
-	}
+    cout <<BOLDCYAN<<"your bag contains : "<<RESET<<endl;
+    for(int i(0); i<bag.size(); i++)
+      cout <<BOLDCYAN<< bag[i].getName() << " | ";
+    cout<<RESET <<endl;
+  }
 }
 //methode pour ajouter des elements dans le sac on regardesi le sac n'est pas plein on ajoute sinon on doit supprimer un item
 void Player::Add_item_bag( Item &item){
-	char c;
+  char c;
   if(bag.size()<MAX_ITEM){
     bag.push_back(item);
 
   }
   else{
-		cout <<RED<<"Your bag is full remove an item if you want to add it"<<RESET<<endl;
-		cout <<RED<<"tape 'y' if you want remove something or other button if not "<<RESET<<endl;
+    cout <<RED<<"Your bag is full remove an item if you want to add it"<<RESET<<endl;
+    cout <<RED<<"tape 'y' if you want remove something or other button if not "<<RESET<<endl;
 
-		system("stty raw");
+    system("stty raw");
     c = getchar();
-		cout <<endl;
+    cout <<endl;
     system("stty cooked");
-		if (c=='y')
-			remove_item_bag();
+    if (c=='y')
+      remove_item_bag();
 
-	}
+  }
 }
 void Player::remove_item_bag(){
   if(bag.size()<=0)
@@ -64,16 +64,16 @@ void Player::remove_item_bag(){
 
 void Player::change_Weapon(){
   if(bag.size()<=0)
-  cout <<"your bag is empty, you can't change your weapon"<<endl;
+    cout <<"your bag is empty, you can't change your weapon"<<endl;
   else{
-  //cout<<"choice the number of weapon wich you want replace"<<endl;
-		for(int i(0); i<bag.size(); i++){
-			cout <<BOLDCYAN<< bag[i].getName() << "| ";
-			if(bag[i].typeOf()==WEAPON)
-			//TODO 
-				setWeapon((Weapon&)bag[i]);
-		}
-		cout<<RESET <<endl;
+    //cout<<"choice the number of weapon wich you want replace"<<endl;
+    for(int i(0); i<bag.size(); i++){
+      cout <<BOLDCYAN<< bag[i].getName() << "| ";
+      if(bag[i].typeOf()==WEAPON)
+	//TODO 
+	setWeapon((Weapon&)bag[i]);
+    }
+    cout<<RESET <<endl;
   }
 }
 const string Player::getName() const { return name; }
@@ -98,17 +98,17 @@ void Player::turn() {
     cout << "\'l\' - down " << endl;
     cout << "\'m\' - right " << endl;
     cout << "\'q\' - quit " << endl;
-		cout << "\'i\' - list of your Item " << endl;
-		cout << "\'w\' - your Weapon " << endl;
-		cout << "\'c\' - change your Weapon " << endl;
+    cout << "\'i\' - list of your Item " << endl;
+    cout << "\'w\' - your Weapon " << endl;
+    cout << "\'c\' - change your Weapon " << endl;
   }
-	else if (c=='i')
-		lookbag();
-	else if (c=='c')
-		change_Weapon();
-	else if (c=='w')
-		cout << RED << "the weapon you use is: "<<getWeapon().getName()<<RESET<<endl;
-	else if(c == 'q')
+  else if (c=='i')
+    lookbag();
+  else if (c=='c')
+    change_Weapon();
+  else if (c=='w')
+    cout << RED << "the weapon you use is: "<<getWeapon().getName()<<RESET<<endl;
+  else if(c == 'q')
     exit(0);
   else //a move
     move(c);
@@ -187,17 +187,17 @@ void Player::askUseOrStore(Item &item){
   if(c == 's'){
     Add_item_bag(item);
   }
-	else {//ces conditions cté just pour tester si le changement de weapon marche
-		//if(item.getDurability()!=0)
-		//{
-			cout << RED << "you use " <<item.getName()<<" Now"<<RESET << endl;
-			setWeapon((Weapon &)item);
-		// }
-		// else{
-		// 	cout << GREEN << "to use " <<item.getName()<< RESET <<endl;
-		// }
+  else {//ces conditions cté just pour tester si le changement de weapon marche
+    //if(item.getDurability()!=0)
+    //{
+    cout << RED << "you use " <<item.getName()<<" Now"<<RESET << endl;
+    setWeapon((Weapon &)item);
+    // }
+    // else{
+    // 	cout << GREEN << "to use " <<item.getName()<< RESET <<endl;
+    // }
 
-	}
+  }
 }
 void Player::askUseOrStore(Weapon &weapon){
   char answer = 0;
@@ -219,15 +219,15 @@ void Player::askUseOrStore(Weapon &weapon){
   if(c == 's'){
     Add_item_bag(weapon);
   }
-	else {//ces conditions cté just pour tester si le changement de weapon marche
-		if(weapon.typeOf()==WEAPON)
-		{
-			cout << GREEN << "you use " <<weapon.getName()<<" Now"<<RESET << endl;
-			setWeapon((Weapon &)weapon);
-		 }
+  else {//ces conditions cté just pour tester si le changement de weapon marche
+    if(weapon.typeOf()==WEAPON)
+      {
+	cout << GREEN << "you use " <<weapon.getName()<<" Now"<<RESET << endl;
+	setWeapon((Weapon &)weapon);
+      }
 
 
-	}
+  }
 }
 
 int Player::typeOf() const{ return PLAYER; }

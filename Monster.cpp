@@ -29,6 +29,15 @@ void Monster::turn(){
     move();
 }
 
+bool Monster::emptyAround(int i, int j) const{
+  int n = getFloor()->getN();
+  int m = getFloor()->getM();
+  return (i-1 > 0 && floor->getCase(i-1,j)->typeOf() == EMPTY ||
+	 j-1 > 0 && floor->getCase(i,j-1)->typeOf() == EMPTY ||
+	 i+1 < n && floor->getCase(i+1,j)->typeOf() == EMPTY ||
+	 j+1 < m && floor->getCase(i,j+1)->typeOf() == EMPTY );
+}
+
 void Monster::move(){
   //move randomly around
   int ii,jj;
@@ -45,7 +54,7 @@ void Monster::move(){
       ii = ii+1;
     else if(random == 3 && jj+1 < getFloor()->getM())
       jj = jj+1;
-  }while(floor->getCase(ii,jj)->typeOf() != EMPTY);
+  }while(floor->getCase(ii,jj)->typeOf() != EMPTY && emptyAround(i,j));
 
   floor->setBoard(ii,jj,*this);
   floor->setBoard(getI(),getJ());
