@@ -27,6 +27,10 @@ int main(){
   monster3.setFloor(&floor);
   Weapon fireBall(15,-1,5,'B',"FireBall");
   floor.setBoard(2,5,fireBall);
+  Weapon Shuriken (10,10,5,'?',"Shuriken");
+  floor.setBoard(7,3,Shuriken);
+  Weapon sword(15,20,1,'S',"Sword II");
+  floor.setBoard(8,7,sword);
   floor.print();
   floor.turn();
   cout << "TRRT"<<endl;
