@@ -125,7 +125,7 @@ void Player::move(char c){
       }
     }
   }else if( c == 'o'){
-    if(i > 0){
+    if(i > 0 && floor->getCase(i-1,j)->typeOf() != WALL){
       if(interact(*floor->getCase(i-1,j))){
 	floor->setBoard(i-1,j,*this);
 	setSymbole('^');
@@ -158,16 +158,56 @@ void Player::move(char c){
 bool Player::interact(Case & c){
   if(c.typeOf() == EMPTY)
     return true;
-  else if(c.typeOf() == ITEM or c.typeOf()==WEAPON){
-    askUseOrStore((Item&)c);
+  else if(c.typeOf() == SOURCE)
+    return healSource();
+  else if(c.typeOf() == ITEM)
+    return false;
+  else if(c.typeOf()==WEAPON){
+    askUseOrStore((Weapon&)c);
     return true;
+  }else if((c.typeOf()%10) == POTION){
+    return askUseOrStore((Potion&)c);
   }else if(c.typeOf() == MONSTER){
     attack((People&)c);
     return false;
   }
 }
 
+bool Player::healSource(){
+  life = MAX_LIFE_PLAYER;
+  cout << BOLDGREEN << "Thanks to the source, you get your all life ("
+       <<life<<"hp"<<")"<<RESET<<endl;  
+  return false;
+}
+
+bool Player::askUseOrStore(Potion &potion){
+  char answer = 0;
+  bool b = true;
+  char c;
+  cout << "Do you want to use(u) " << potion.getName() <<
+    " or store(s) it in your bag ? Or do nothing (n)" << endl;
+  while(b){
+    system("stty raw");
+    c = getchar();
+    system("stty cooked");
+    cout << endl;
+    if(c != 'u' && c != 's' && c != 'n')
+      cout << RED << "Wrong answer. Press u to use " << potion.getName()
+	   <<", s to store it or n to do nothing" << RESET << endl;
+    else
+      b = false;
+  }
+  if(c == 'n')
+    return false;
+  if(c == 's')
+    Add_item_bag(potion);
+  else 
+    use(potion);
+  return true;
+}
+/*
 void Player::askUseOrStore(Item &item){
+  //TODO si cest juste un objet ne peut que le stocker
   char answer = 0;
   bool b = true;
   char c;
@@ -184,21 +224,10 @@ void Player::askUseOrStore(Item &item){
     else
       b = false;
   }
-  if(c == 's'){
+  if(c == 's')
     Add_item_bag(item);
-  }
-  else {//ces conditions cté just pour tester si le changement de weapon marche
-    //if(item.getDurability()!=0)
-    //{
-    cout << RED << "you use " <<item.getName()<<" Now"<<RESET << endl;
-    setWeapon((Weapon &)item);
-    // }
-    // else{
-    // 	cout << GREEN << "to use " <<item.getName()<< RESET <<endl;
-    // }
-
-  }
 }
+*/
 void Player::askUseOrStore(Weapon &weapon){
   char answer = 0;
   bool b = true;
@@ -231,3 +260,25 @@ void Player::askUseOrStore(Weapon &weapon){
 }
 
 int Player::typeOf() const{ return PLAYER; }
+
+void Player::use(Potion &p){
+  if(p.typeOf() == POSION){
+    if(life - p.getEffect() <= 0)
+      die();
+    else
+      life -= p.getEffect();
+    cout << "Your drunk posion, not potion ... Now " << getName() << " have "
+	 <<getLife()<<" hp" << endl;
+  }else if(p.typeOf() == RESI_UP)
+    resi += (double)p.getEffect();
+  else if(p.typeOf() == RESI_DOWN)
+    resi -= (double)p.getEffect();
+  else if(p.typeOf() == HEALING){
+    if(life + p.getEffect() > MAX_LIFE)
+      life = MAX_LIFE;
+    else
+      life += p.getEffect();
+    cout << "Healing Potion used. Now " << getName() << " have "
+	 <<getLife()<<" hp" << endl;
+  }
+}

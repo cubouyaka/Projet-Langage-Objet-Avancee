@@ -26,13 +26,19 @@
 #define BOLDWHITE "\033[1m\033[37m"
 #define RESET "\033[0m"
 
+#define EMPTY -1
 #define WALL 0
-#define EMPTY 1
+#define SOURCE 1
 #define MONSTER 2
 #define ITEM 3
 #define PLAYER 4
 #define PNJ 5
 #define WEAPON 6
+#define POTION 7
+#define POSION 17
+#define RESI_UP 27
+#define RESI_DOWN 37
+#define HEALING 47
 
 
 using namespace std;
@@ -77,6 +83,22 @@ public:
 class Empty : public Case {
 public:
   Empty(Floor *f = NULL, int i = -1, int j = -1);
+};
+
+class Wall : public Case{
+public:
+  Wall(Floor *f = NULL, int i = -1, int j = -1);
+  
+  int typeOf() const;
+};
+
+//A source where the player can heal
+class Source : public Case{
+public:
+  Source(Floor *f = NULL, int i = -1, int j = -1);
+
+  int typeOf() const;
+  void print() const;
 };
 
 #endif

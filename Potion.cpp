@@ -5,6 +5,8 @@ Potion::Potion(const int e, const char s, const char* n,Floor * f) : Item(f,s,n)
 								     effect(e){} 
 const int Potion::getEffect() const { return effect; }
 
+int Potion::typeOf() const{ return POTION; }
+
 void Potion::print() const {
   //affichage du nom et le symbole de l'item
    cout<<"Potion name : "<<name <<" potion Symbole: " << BOLDBLUE << symbole << RESET<<endl; }
@@ -20,3 +22,8 @@ ResiUpPotion::ResiUpPotion(const int e) : Potion(e,'R',"Resistance+ Potion"){}
 ResiDownPotion::ResiDownPotion(const int e):Potion(e,'r',"Resistance- Potion"){}
 
 void ResiDownPotion::print() const { cout << 'y'<<BLUE << symbole << RESET; }
+
+int Posion::typeOf() const{ return POSION; }
+int HealingPotion::typeOf() const{ return HEALING; }
+int ResiUpPotion::typeOf() const{ return RESI_UP; }
+int ResiDownPotion::typeOf() const{ return RESI_DOWN; }

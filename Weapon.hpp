@@ -5,7 +5,7 @@
 #define DEFAULT_WEAPON_A 10
 #define DEFAULT_WEAPON_D 10
 
-#define SHURIKEN Weapon(10,10,5,'?',"Shuriken")
+#define SHURIKEN Weapon(100,10,5,'?',"Shuriken")
 #define SWORD Weapon(15,20,1,'s',"Sword")
 #define SWORD2 Weapon(15,20,1,'S',"Sword II")
 #define SCEPTER Weapon(10,15,1,'s',"Scepter")

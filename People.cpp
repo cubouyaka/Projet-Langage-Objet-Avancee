@@ -1,7 +1,7 @@
 #include "People.hpp"
 
 People::People(Floor* f,int i, int j, char s, int l,double r, const int S,int va,
-	       Weapon w,const Item it) : Case(s,f,i,j), life(l), resi(r),
+	       Weapon w,Item it) : Case(s,f,i,j), life(l), resi(r),
 					 size(S), visual_area(va), weapon(w),
 					 item(it){ played = false; }
 People::People(const People &p) :
@@ -28,17 +28,20 @@ double People::getResi() const { return resi; }
 const int People::getSize() const { return size; }
 int People::getVArea() const { return visual_area; }
 Weapon People::getWeapon() const { return weapon; }
-const Item People::getItem() const { return item; }
+Item People::getItem() const { return item; }
 void People::setPlayed(bool b) { played = b; }
 
 void People::setWeapon(Weapon &w) { weapon = w; }
 
 bool People::attacked(const People &p){
-  bool b = (life-=(p.getWeapon().getAttack()*resi)) <= 0;
+  if(life-p.getWeapon().getAttack()*resi < 0)
+    life = 0;
+  else
+    life -= p.getWeapon().getAttack()*resi;
   cout << p.getName() << " attacked " << getName() <<". Now "<<getName()
        <<" has " << getLife() <<" hp"<<endl ;
 
-  return b;
+  return (life<= 0);
 }
 
 void People::attack(People &p){
@@ -51,7 +54,7 @@ void People::attack(People &p){
     setWeapon(w);//replace it with DEFAULT_WEAPON (cf People.hpp)
   }
 }
-
+/*
 void People::drinkPotion(const HealingPotion  &p) {
   if(life + p.getEffect() > MAX_LIFE)
     life = MAX_LIFE;
@@ -69,27 +72,13 @@ void People::drinkPotion(const Posion  &p) {
 void People::drinkPotion(const ResiUpPotion  &p){ resi += (double)p.getEffect();}
 
 void People::drinkPotion(const ResiDownPotion &p){resi -= (double)p.getEffect();}
-
+*/
 void People::die() {
-  cout << "RRRRR"<<endl;
   if (typeOf()==PLAYER) {
     cout <<BOLDRED << getName() <<" YOU LOSE , die in case ("<<getI()<<";"
 	 <<getJ()<<")"<<RESET<<endl;
     exit(0);
   }
-  else
-    {
-      /*if(getItem().getName() != "Unknown Item"){
-	Item item = Item(getItem());
-	item.setI(getI());
-	item.setJ(getJ());
-	getFloor()->setBoard(getI(),getJ(),item);
-      }else{
-	Weapon weapon = getWeapon();
-	weapon.setI(getI());
-	weapon.setJ(getJ());
-	getFloor()->setBoard(getI(),getJ(),weapon);
-	}*/
-      cout << getName() <<" die in case ("<<getI()<<";"<<getJ()<<")"<<endl;
-    }
+  cout << getName() <<" die in case ("<<getI()<<";"<<getJ()<<")"<<endl;
+  getFloor()->setBoard(getI(),getJ());
 }

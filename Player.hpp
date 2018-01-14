@@ -33,8 +33,9 @@ public:
   //methode pour changer d'arme
   void change_Weapon();
   void askUseOrStore(Weapon &weapon);
-  void askUseOrStore(Item &item);
-
+  bool askUseOrStore(Potion &potion);
+  void use(Potion &p);
+  bool healSource(); //get all your life back thanks to the source
 };
 
 #endif
