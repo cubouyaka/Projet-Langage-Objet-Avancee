@@ -11,7 +11,7 @@
 #include "Item.hpp"
 #include "Potion.hpp"
 #include "Floor.hpp"
-#include<string>
+#include <string>
 #include <fstream>
 
 using namespace std;
