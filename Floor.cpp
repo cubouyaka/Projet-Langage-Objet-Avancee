@@ -26,14 +26,13 @@ void Floor::setBoard(const int i, const int j, Case &c) {
 }
 
 void Floor::turn() {
-  while(true){
-    for(int i = 0; i < n; i++)
-      for(int j = 0; j < m; j++)
-	if(!board[i][j]->getPlayed()) //if it didn't moved already
-	  board[i][j]->turn();
-    print();
-    endTurn();
-  }
+  //while(true){
+  for(int i = 0; i < n; i++)
+    for(int j = 0; j < m; j++)
+      if(!board[i][j]->getPlayed()) //if it didn't moved already
+	board[i][j]->turn();
+  print();
+  endTurn();
 }
 
 void Floor::endTurn(){

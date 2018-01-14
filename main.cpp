@@ -2,7 +2,7 @@
 #include "Player.hpp"
 #include "Warrior.hpp"
 #include "Wizard.hpp"
-#include "Floor.hpp"
+#include "Game.hpp"
 #include "Weapon.hpp"
 #include "Item.hpp"
 #include <iostream>
@@ -34,8 +34,12 @@ int main(){
   floor.setBoard(7,3,Shuriken);
   Weapon sword(15,20,1,'S',"Sword II");
   floor.setBoard(8,7,sword);
+  Game game(1);
+  game.setFloor(0,&floor);
   floor.print();
-  floor.turn();
+  while(1)
+    game.play();
+  //floor.turn();
   cout << "TRRT"<<endl;
   /*Floor f(10,10);
   Item p;

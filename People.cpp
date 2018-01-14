@@ -71,14 +71,25 @@ void People::drinkPotion(const ResiUpPotion  &p){ resi += (double)p.getEffect();
 void People::drinkPotion(const ResiDownPotion &p){resi -= (double)p.getEffect();}
 
 void People::die() {
-  getFloor()->setBoard(getI(),getJ());
+  cout << "RRRRR"<<endl;
   if (typeOf()==PLAYER) {
-		cout << getName() <<" YOU LOSE , die in case ("<<getI()<<";"<<getJ()<<")"<<endl;
-	  exit(0);
+    cout <<BOLDRED << getName() <<" YOU LOSE , die in case ("<<getI()<<";"
+	 <<getJ()<<")"<<RESET<<endl;
+    exit(0);
   }
-	else
-	{
-
-	  cout << getName() <<" die in case ("<<getI()<<";"<<getJ()<<")"<<endl;
-	}
+  else
+    {
+      /*if(getItem().getName() != "Unknown Item"){
+	Item item = Item(getItem());
+	item.setI(getI());
+	item.setJ(getJ());
+	getFloor()->setBoard(getI(),getJ(),item);
+      }else{
+	Weapon weapon = getWeapon();
+	weapon.setI(getI());
+	weapon.setJ(getJ());
+	getFloor()->setBoard(getI(),getJ(),weapon);
+	}*/
+      cout << getName() <<" die in case ("<<getI()<<";"<<getJ()<<")"<<endl;
+    }
 }
