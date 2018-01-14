@@ -1,6 +1,6 @@
 #include "Floor.hpp"
 
-Floor::Floor(const int _n, const int _m) : n(_n), m(_m) { 
+Floor::Floor(const int _n, const int _m) : n(_n), m(_m) {
   board = new Case ** [n];
   for(int i = 0; i < n; i++){
     board[i] = new Case *[m];
@@ -19,9 +19,9 @@ void Floor::setBoard(const int i, const int j) {
     board[i][j] = new Empty(this,i,j);
   //TODO else: out of bounds
 }
-void Floor::setBoard(const int i, const int j, Case &c) { 
+void Floor::setBoard(const int i, const int j, Case &c) {
   if(0 <= i && i < n && 0 <= j && j < m)
-    board[i][j] = &c; 
+    board[i][j] = &c;
   //TODO else: out of bounds
 }
 
@@ -39,7 +39,7 @@ void Floor::endTurn(){
   for(int i = 0; i < n; i++)
     for(int j = 0; j<m; j++)
       board[i][j]->setPlayed(false);
-}
+} 
 
 void Floor::print() const{
   cout << endl <<'+'<< setfill('-') << setw(m+1) << '+' << endl;
@@ -51,4 +51,3 @@ void Floor::print() const{
   }
   cout <<'+'<< setfill('-') << setw(m+1) << '+' << endl;
 }
-  
