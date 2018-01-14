@@ -11,6 +11,7 @@ using namespace std;
 
 
 int main(){
+  srand (time(NULL));
   Floor floor(15,10);
   Posion poison(10);
   floor.setBoard(0,0,poison);
@@ -28,8 +29,9 @@ int main(){
   Monster monster3(7,6);
   floor.setBoard(7,6,monster3);
   monster3.setFloor(&floor);
+  /*
   Weapon fireBall(15,-1,5,'B',"FireBall");
-  floor.setBoard(2,5,fireBall);
+  floor.setBoard(2,5,fireBall);*/
   Weapon Shuriken (10,10,5,'?',"Shuriken");
   floor.setBoard(7,3,Shuriken);
   Weapon sword(15,20,1,'S',"Sword II");

@@ -14,28 +14,33 @@ public:
 
   const int getEffect() const;
   virtual void print() const;
+  virtual int typeOf() const;
 };
 
 class HealingPotion : public Potion {
 public:
   HealingPotion(const int e = DEFAULT_POTION);
+  int typeOf() const;
 };
 
 class Posion : public Potion {
 public:
   Posion(const int e = DEFAULT_POTION);
   void print() const;
+  int typeOf() const;
 };
 
 class ResiUpPotion : public Potion {
 public:
   ResiUpPotion(const int e = DEFAULT_POTION);
+  int typeOf() const;
 };
 
 class ResiDownPotion : public Potion {
 public:
   ResiDownPotion(const int e = DEFAULT_POTION);
   void print() const;
+  int typeOf() const;
 };
 
 #endif

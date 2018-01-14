@@ -33,6 +33,11 @@
 #define PLAYER 4
 #define PNJ 5
 #define WEAPON 6
+#define POTION 7
+#define POSION 17
+#define RESI_UP 27
+#define RESI_DOWN 37
+#define HEALING 47
 
 
 using namespace std;

@@ -20,9 +20,8 @@ void Floor::setBoard(const int i, const int j) {
   //TODO else: out of bounds
 }
 void Floor::setBoard(const int i, const int j, Case &c) { 
-  if(0 <= i && i < n && 0 <= j && j < m)
+  if(0 <= i && i < n && 0 <= j && j < m) //else out of bounds
     board[i][j] = &c; 
-  //TODO else: out of bounds
 }
 
 void Floor::turn() {
