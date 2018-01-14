@@ -4,7 +4,7 @@
 #include <vector>
 #include <typeinfo>
 
-#define MAX_ITEM 10
+#define MAX_ITEM 3
 
 class Player : public People {
 private:
@@ -27,12 +27,12 @@ public:
   //methode pour voir les items du joueur
   void lookbag() const;
   //methode pour ajouter un item dans le sac
-  void Add_item_bag(Item &item) const;
+  void Add_item_bag(Item &item) ;
   //metho pour supprimer un item dans le sac
   void remove_item_bag() ;
   //methode pour changer d'arme
   void change_Weapon();
-  //virtual void die(); 
+  void askUseOrStore(Weapon &weapon);
   void askUseOrStore(Item &item);
 
 };

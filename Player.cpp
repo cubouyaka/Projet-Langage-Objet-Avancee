@@ -21,17 +21,26 @@ void Player::lookbag()const{
 	}
 }
 //methode pour ajouter des elements dans le sac on regardesi le sac n'est pas plein on ajoute sinon on doit supprimer un item
-void Player::Add_item_bag( Item &item) const{
+void Player::Add_item_bag( Item &item){
+	char c;
   if(bag.size()<MAX_ITEM){
     bag.push_back(item);
-    //changer la positon de l'item
-    item.setI(i);
-    item.setJ(j);
+
   }
-  else
-    cout <<RED<<"Your bag is full remove an item if you want to add it"<<RESET<<endl;
+  else{
+		cout <<RED<<"Your bag is full remove an item if you want to add it"<<RESET<<endl;
+		cout <<RED<<"tape 'y' if you want remove something or other button if not "<<RESET<<endl;
+
+		system("stty raw");
+    c = getchar();
+		cout <<endl;
+    system("stty cooked");
+		if (c=='y')
+			remove_item_bag();
+
+	}
 }
-void Player::remove_item_bag( ){
+void Player::remove_item_bag(){
   if(bag.size()<=0)
     cout <<"your bag is empty, you can't remove an item"<<endl;
   else{
@@ -47,31 +56,26 @@ void Player::remove_item_bag( ){
       }
 
     cout<<"you have choosen this item: "<<CYAN<<bag[i].getName()<<RESET<<" it will be remove in your bag"<<endl;
-    //TODO supprime le dernier element au lieu de l'element selectionné
     bag.erase(bag.begin()+ i);
 
     lookbag();
   }
 }
 
-/*void Player::change_Weapon(){
+void Player::change_Weapon(){
   if(bag.size()<=0)
   cout <<"your bag is empty, you can't change your weapon"<<endl;
   else{
-  cout<<"choice the number of weapon wich you want replace"<<endl;
-  lookbag();
-  int i=0;
-  cin >>i ;
-  while(i<0 ||i>=bag.size())
-  {
-  cout <<"Wrong number, this item does not exist in your bag "<<endl;
-  cout <<"please put a valid number"<<endl;
-  cin >>i ;
-  if(bag[i])
+  //cout<<"choice the number of weapon wich you want replace"<<endl;
+		for(int i(0); i<bag.size(); i++){
+			cout <<BOLDCYAN<< bag[i].getName() << "| ";
+			if(bag[i].typeOf()==WEAPON)
+			//TODO 
+				setWeapon((Weapon&)bag[i]);
+		}
+		cout<<RESET <<endl;
   }
-
-  cout<<"you have choosen this item: "<<CYAN<<bag[i].getName()<<RESET<<" it will be remove in your bag"<<endl;
-*/
+}
 const string Player::getName() const { return name; }
 
 void Player::turn() {
@@ -82,8 +86,8 @@ void Player::turn() {
     c = getchar();
     system("stty cooked");
     cout << endl;
-    if(c != 'o' && c != 'k' && c != 'l' && c != 'm' && c != 'h' && c != 'q' && c!='i' && c!='w')
-      cout << RED << "Wrong command, try again : k(left), o(up), l(down), m(right),i(list_of_item),h(help), q(quit)\n" << RESET;
+    if(c != 'o' && c != 'k' && c != 'l' && c != 'm' && c != 'h' && c != 'q' && c!='i' && c!='w' && c!='c')
+      cout << RED << "Wrong command, try again : k(left), o(up), l(down), m(right),i(list_of_item),w(your Weapon),c(change weapon),h(help), q(quit)\n" << RESET;
     else
       b = true;
   }
@@ -96,9 +100,12 @@ void Player::turn() {
     cout << "\'q\' - quit " << endl;
 		cout << "\'i\' - list of your Item " << endl;
 		cout << "\'w\' - your Weapon " << endl;
+		cout << "\'c\' - change your Weapon " << endl;
   }
 	else if (c=='i')
 		lookbag();
+	else if (c=='c')
+		change_Weapon();
 	else if (c=='w')
 		cout << RED << "the weapon you use is: "<<getWeapon().getName()<<RESET<<endl;
 	else if(c == 'q')
@@ -181,15 +188,45 @@ void Player::askUseOrStore(Item &item){
     Add_item_bag(item);
   }
 	else {//ces conditions cté just pour tester si le changement de weapon marche
-		/*if(item.typeOf()==WEAPON)
-		{
-			cout << RED << "you use " <<item.getName()<<" Now"<< endl;
+		//if(item.getDurability()!=0)
+		//{
+			cout << RED << "you use " <<item.getName()<<" Now"<<RESET << endl;
 			setWeapon((Weapon &)item);
-		}
-		else{
-			cout << GREEN << "to use " <<item.getName()<< endl;
-		}*/
-		
+		// }
+		// else{
+		// 	cout << GREEN << "to use " <<item.getName()<< RESET <<endl;
+		// }
+
+	}
+}
+void Player::askUseOrStore(Weapon &weapon){
+  char answer = 0;
+  bool b = true;
+  char c;
+  cout << "Do you want to use(u) " << weapon.getName() <<
+    " or store(s) it in your bag ?" << endl;
+  while(b){
+    system("stty raw");
+    c = getchar();
+    system("stty cooked");
+    cout << endl;
+    if(c != 'u' && c != 's')
+      cout << RED << "Wrong answer. Press u to use " << weapon.getName()
+	   <<" or s to store it" << RESET << endl;
+    else
+      b = false;
+  }
+  if(c == 's'){
+    Add_item_bag(weapon);
+  }
+	else {//ces conditions cté just pour tester si le changement de weapon marche
+		if(weapon.typeOf()==WEAPON)
+		{
+			cout << GREEN << "you use " <<weapon.getName()<<" Now"<<RESET << endl;
+			setWeapon((Weapon &)weapon);
+		 }
+
+
 	}
 }
 
