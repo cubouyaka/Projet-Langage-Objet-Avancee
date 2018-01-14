@@ -6,12 +6,12 @@
 class Case;
 
 class Floor {
-  friend class Case; 
+  friend class Case;
 protected:
   const int n;
   const int m;
   mutable Case*** board;
-  
+
 
 public:
   //CONSTRUCTORS
@@ -24,6 +24,7 @@ public:
   Case*** getBoard() const;
   Case * getCase(const int i, const int j) const;
   void setBoard(const int i, const int j);
+  void setBoard(const int i, const int j,char c);
   void setBoard(const int i, const int j, Case &c);
   void endTurn();
 

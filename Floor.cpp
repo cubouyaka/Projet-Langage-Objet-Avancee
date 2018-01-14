@@ -1,6 +1,6 @@
 #include "Floor.hpp"
 
-Floor::Floor(const int _n, const int _m) : n(_n), m(_m) { 
+Floor::Floor(const int _n, const int _m) : n(_n), m(_m) {
   board = new Case ** [n];
   for(int i = 0; i < n; i++){
     board[i] = new Case *[m];
@@ -19,9 +19,15 @@ void Floor::setBoard(const int i, const int j) {
     board[i][j] = new Empty(this,i,j);
   //TODO else: out of bounds
 }
-void Floor::setBoard(const int i, const int j, Case &c) { 
-  if(0 <= i && i < n && 0 <= j && j < m) //else out of bounds
-    board[i][j] = &c; 
+void Floor::setBoard(const int i, const int j,char c) {
+  if(0 <= i && i < getN() && 0 <= j && j < getM())
+    board[i][j] = new Wall(this,i,j);
+  //TODO else: out of bounds
+}
+void Floor::setBoard(const int i, const int j, Case &c) {
+  if(0 <= i && i < n && 0 <= j && j < m)
+    board[i][j] = &c;
+  //TODO else: out of bounds
 }
 
 void Floor::turn() {
@@ -41,13 +47,12 @@ void Floor::endTurn(){
 }
 
 void Floor::print() const{
-  cout << endl <<'+'<< setfill('-') << setw(m+1) << '+' << endl;
+  //cout << endl <<'+'<< setfill('-') << setw(m+1) << '+' << endl;
   for(int i = 0; i < n; i++){
-    cout << '|';
+  //  cout << '|';
     for(int j = 0; j < m; j++)
       board[i][j]->print();
-    cout << '|' <<  endl;
+    cout  <<  endl;
   }
-  cout <<'+'<< setfill('-') << setw(m+1) << '+' << endl;
+  //cout <<'+'<< setfill('-') << setw(m+1) << '+' << endl;
 }
-  

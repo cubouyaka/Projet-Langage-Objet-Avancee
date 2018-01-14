@@ -1,8 +1,20 @@
 #ifndef GAME_H
 #define GAME_H
+#include "Monster.hpp"
+#include "Warrior.hpp"
 
+#include "Player.hpp"
+#include "Warrior.hpp"
+#include "Wizard.hpp"
+#include "Game.hpp"
+#include "Weapon.hpp"
+#include "Item.hpp"
+#include "Potion.hpp"
 #include "Floor.hpp"
+#include<string>
+#include <fstream>
 
+using namespace std;
 class Game {
 public:
   const int nb_floor;
@@ -14,7 +26,8 @@ public:
 
   void setFloor(int n, Floor* f);
   void play();
+  void Loadfile(string f);
 
 };
-  
+
 #endif
