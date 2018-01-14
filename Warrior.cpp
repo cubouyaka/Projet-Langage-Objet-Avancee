@@ -10,6 +10,7 @@ void Warrior::print() const {
   cout << RED <<  symbole << RESET;
 }
 
+const string Warrior::getName() const{ return string("Warrior"); }
 void Warrior::turn(){
   move();
   setPlayed(true);
@@ -103,11 +104,15 @@ void Warrior2::print() const {
   cout << BOLDRED <<  symbole << RESET;
 }
 
-//NINJA
-Ninja::Ninja(int i, int j, int l, const double r, const int s, int va,
-	     const Weapon w, const Item it) : Warrior(i,j,l,r,'N',s,va,w,it){}
+const string Warrior2::getName() const{ return string("Warrior2"); }
 
-void Ninja::print() const { cout << MAGENTA << "I'm a ninja x " << RED<<  symbole << RESET << endl;}
+//NINJA
+
+Ninja::Ninja(int i, int j, int l, const double r,char c, const int s, 
+	     int va, const Weapon w, const Item it) : Warrior(i,j,l,r,c,s,va,w,it){}
+
+const string Ninja::getName() const{ return string("Ninja"); }
+
 void Ninja::teleportation(){
   srand(time(NULL));
   int a=rand()%10;
@@ -116,15 +121,15 @@ void Ninja::teleportation(){
   j=b;
   //TODO..
 }
-void Ninja::getposition() const {
-  cout << YELLOW<< "your position is "<< i <<","<< j <<RESET <<endl;
-}
+
+Ninja2::Ninja2(int i, int j, int l, const double r,char c, const int s, int va,
+	       const Weapon w, const Item it) : Ninja(i,j,l,r,c,s,va,w,it){}
+
+void Ninja2::print() const { cout << BOLDRED << symbole << RESET << endl;}
 
 //CAVALIER
 Cavalier::Cavalier(int i, int j, int l, const double r, const int s, int va,
 		   const Weapon w, const Item it) : Warrior(i,j,l,r,'C',s,va,w,it){}
 
 void Cavalier::print() const { cout << YELLOW<<  "I'm a cavalier -> " << RED << symbole << RESET << endl;}
-void Cavalier::getposition() const {
-  cout << YELLOW<< "your position is "<< i <<","<< j <<RESET <<endl;
-}
+

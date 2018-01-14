@@ -70,4 +70,3 @@ Monster2::Monster2(int i, int j, int l, const double r, char c, const int s,
   Monster(i,j,l,r,c,s,va,w,it,f){}
 
 void Monster2::print() const{ cout << BOLDRED << symbole << RESET;}
-const string Monster2::getName() const{ return string("Monster2"); }
