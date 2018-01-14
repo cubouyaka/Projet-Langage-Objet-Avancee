@@ -32,7 +32,7 @@ public:
   void remove_item_bag() ;
   //methode pour changer d'arme
   void change_Weapon();
-  void askUseOrStore(Weapon &weapon);
+  bool askUseOrStore(Weapon &weapon);
   bool askUseOrStore(Potion &potion);
   void use(Potion &p);
   bool healSource(); //get all your life back thanks to the source

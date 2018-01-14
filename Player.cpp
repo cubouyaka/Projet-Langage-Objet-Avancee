@@ -80,8 +80,8 @@ const string Player::getName() const { return name; }
 
 void Player::turn() {
   char c = 0;
-  bool b = false;
-  while(!b){
+  bool b = false, bb = false;
+  while(!b || !bb){
     system("stty raw");
     c = getchar();
     system("stty cooked");
@@ -90,28 +90,29 @@ void Player::turn() {
       cout << RED << "Wrong command, try again : k(left), o(up), l(down), m(right),i(list_of_item),w(your Weapon),c(change weapon),h(help), q(quit)\n" << RESET;
     else
       b = true;
+    if(c == 'h'){
+      cout << "To move on the game, use the following commands :"<<endl;
+      cout << "\'k\' - left " << endl;
+      cout << "\'o\' - up " << endl;
+      cout << "\'l\' - down " << endl;
+      cout << "\'m\' - right " << endl;
+      cout << "\'q\' - quit " << endl;
+      cout << "\'i\' - list of your Item " << endl;
+      cout << "\'w\' - your Weapon " << endl;
+      cout << "\'c\' - change your Weapon " << endl;
+    }
+    else if (c=='i')
+      lookbag();
+    else if (c=='c')
+      change_Weapon();
+    else if (c=='w')
+      cout << RED << "the weapon you use is: "<<getWeapon().getName()<<RESET<<endl;
+    else if(c == 'q')
+      exit(0);
+    else if(c == 'o' || c == 'k'|| c == 'l'|| c == 'm') //a move
+      bb = true;
   }
-  if(c == 'h'){
-    cout << "To move on the game, use the following commands :"<<endl;
-    cout << "\'k\' - left " << endl;
-    cout << "\'o\' - up " << endl;
-    cout << "\'l\' - down " << endl;
-    cout << "\'m\' - right " << endl;
-    cout << "\'q\' - quit " << endl;
-    cout << "\'i\' - list of your Item " << endl;
-    cout << "\'w\' - your Weapon " << endl;
-    cout << "\'c\' - change your Weapon " << endl;
-  }
-  else if (c=='i')
-    lookbag();
-  else if (c=='c')
-    change_Weapon();
-  else if (c=='w')
-    cout << RED << "the weapon you use is: "<<getWeapon().getName()<<RESET<<endl;
-  else if(c == 'q')
-    exit(0);
-  else //a move
-    move(c);
+  move(c);
 }
 
 void Player::move(char c){
@@ -163,8 +164,7 @@ bool Player::interact(Case & c){
   else if(c.typeOf() == ITEM)
     return false;
   else if(c.typeOf()==WEAPON){
-    askUseOrStore((Weapon&)c);
-    return true;
+    return askUseOrStore((Weapon&)c);
   }else if((c.typeOf()%10) == POTION){
     return askUseOrStore((Potion&)c);
   }else if(c.typeOf() == MONSTER){
@@ -205,58 +205,36 @@ bool Player::askUseOrStore(Potion &potion){
     use(potion);
   return true;
 }
-/*
-void Player::askUseOrStore(Item &item){
-  //TODO si cest juste un objet ne peut que le stocker
-  char answer = 0;
-  bool b = true;
-  char c;
-  cout << "Do you want to use(u) " << item.getName() <<
-    " or store(s) it in your bag ?" << endl;
-  while(b){
-    system("stty raw");
-    c = getchar();
-    system("stty cooked");
-    cout << endl;
-    if(c != 'u' && c != 's')
-      cout << RED << "Wrong answer. Press u to use " << item.getName()
-	   <<" or s to store it" << RESET << endl;
-    else
-      b = false;
-  }
-  if(c == 's')
-    Add_item_bag(item);
-}
-*/
-void Player::askUseOrStore(Weapon &weapon){
+
+bool Player::askUseOrStore(Weapon &weapon){
   char answer = 0;
   bool b = true;
   char c;
   cout << "Do you want to use(u) " << weapon.getName() <<
-    " or store(s) it in your bag ?" << endl;
+    ",store(s) it in your bag or do nothing(n) ?" << endl;
   while(b){
     system("stty raw");
     c = getchar();
     system("stty cooked");
     cout << endl;
-    if(c != 'u' && c != 's')
+    if(c != 'u' && c != 's' && c!='n')
       cout << RED << "Wrong answer. Press u to use " << weapon.getName()
-	   <<" or s to store it" << RESET << endl;
+	   <<", s to store it or n to do nothing" << RESET << endl;
     else
       b = false;
   }
   if(c == 's'){
     Add_item_bag(weapon);
-  }
-  else {//ces conditions cté just pour tester si le changement de weapon marche
+  }else if(c == 'n')
+    return false;
+  else  {//ces conditions cté just pour tester si le changement de weapon marche
     if(weapon.typeOf()==WEAPON)
       {
 	cout << GREEN << "you use " <<weapon.getName()<<" Now"<<RESET << endl;
 	setWeapon((Weapon &)weapon);
       }
-
-
   }
+  return true;
 }
 
 int Player::typeOf() const{ return PLAYER; }
