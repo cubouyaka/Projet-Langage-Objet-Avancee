@@ -100,9 +100,7 @@ Warrior2::Warrior2(int i, int j, int l, const double r,char c, const int s,
 		   int va, const Weapon w, const Item it) : 
   Warrior(i,j,l,r,c,s,va,w,it){}
 
-void Warrior2::print() const { 
-  cout << BOLDRED <<  symbole << RESET;
-}
+void Warrior2::print() const { cout << BOLDRED <<  symbole << RESET;}
 
 const string Warrior2::getName() const{ return string("Warrior2"); }
 
@@ -125,7 +123,7 @@ void Ninja::teleportation(){
 Ninja2::Ninja2(int i, int j, int l, const double r,char c, const int s, int va,
 	       const Weapon w, const Item it) : Ninja(i,j,l,r,c,s,va,w,it){}
 
-void Ninja2::print() const { cout << BOLDRED << symbole << RESET << endl;}
+void Ninja2::print() const { cout << BOLDRED << symbole << RESET;}
 
 //CAVALIER
 Cavalier::Cavalier(int i, int j, int l, const double r, char c, const int s,
@@ -216,7 +214,7 @@ Cavalier2::Cavalier2(int i, int j, int l, const double r, char c, const int s,
 		     int va, const Weapon w, const Item it) 
   : Cavalier(i,j,l,r,c,s,va,w,it){}
 
-void Cavalier2::print() const { cout << BOLDRED << symbole << RESET << endl;}
+void Cavalier2::print() const { cout << BOLDRED << symbole << RESET;}
 
 //MAGICIAN
 Magician::Magician(int i, int j, int l, const double r, char c, const int s, 
@@ -228,5 +226,5 @@ Magician2::Magician2(int i, int j, int l, const double r, char c, const int s,
 		     int va, const Weapon w, const Item it) : 
   Magician(i,j,l,r,c,s,va,w,it){}
 
-void Magician2::print() const { cout <<BOLDRED << symbole << RESET << endl;}
+void Magician2::print() const { cout <<BOLDRED << symbole << RESET;}
 

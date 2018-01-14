@@ -27,8 +27,18 @@ int Case::typeOf() const{ return EMPTY; }
 
 Empty::Empty(Floor * floor, int i, int j) : Case('.',floor,i,j) {}
 
+Space::Space(Floor * floor, int i, int j) : Case(' ',floor,i,j) {}
+
 Wall::Wall(Floor * floor, int i, int j) : Case('#',floor,i,j) {}
 int Wall::typeOf() const{ return WALL; }
+
+StairsUp::StairsUp(Floor * floor, int i, int j) : Case('U',floor,i,j) {}
+int StairsUp::typeOf() const{ return STAIRS_UP; }
+void StairsUp::print() const{ cout << BOLDYELLOW << symbole << RESET;}
+
+StairsDown::StairsDown(Floor * floor, int i, int j) : Case('D',floor,i,j) {}
+int StairsDown::typeOf() const{ return STAIRS_DOWN; }
+void StairsDown::print() const{ cout << BOLDYELLOW << symbole << RESET;}
 
 Source::Source(Floor * floor, int i, int j) : Case('X',floor,i,j){}
 int Source::typeOf() const{ return SOURCE; }

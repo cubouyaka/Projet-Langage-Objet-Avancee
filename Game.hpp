@@ -25,9 +25,8 @@ public:
   Game(int nb_f = 1);
 
   void setFloor(int n, Floor* f);
+  Floor * getFloor(int n);
   void play();
-  void Loadfile(string f);
-
 };
 
 #endif
