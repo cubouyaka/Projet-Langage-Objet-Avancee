@@ -36,6 +36,7 @@ public:
   void remove_item_bag() ;
   //methode pour changer d'arme
   void change_Weapon();
+  void usePotionFromBag();
   bool askUseOrStore(Weapon &weapon);
   bool askUseOrStore(Potion &potion);
   void use(Potion &p);

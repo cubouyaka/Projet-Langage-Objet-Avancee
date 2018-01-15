@@ -83,6 +83,35 @@ void Player::change_Weapon(){
   }
 }
 
+void Player::usePotionFromBag(){
+  if(bag.size()<=0)
+    cout <<"your bag is empty, you don't have any potion"<<endl;
+  else{
+    bool b = true;
+    while(b){
+      lookbag();
+      cout << "enter the index of the potion you want to drink"<<endl;
+      int i;
+      cin >> i;
+      if(i>=0 && i < bag.size() && (bag[i].typeOf() != POSION) ||
+	 (bag[i].typeOf() != RESI_UP) ||
+	 (bag[i].typeOf() != RESI_DOWN) ||
+	 (bag[i].typeOf() != HEALING))
+	b = false;
+      if(!b){
+	if(bag[i].typeOf() != POSION)
+	  use((Posion&)bag[i]);
+	else if(bag[i].typeOf() != RESI_UP)
+	  use((ResiUpPotion&)bag[i]);
+	else if(bag[i].typeOf() != RESI_DOWN)
+	  use((ResiDownPotion&)bag[i]);
+	else if(bag[i].typeOf() != HEALING)
+	  use((HealingPotion&)bag[i]);
+      }
+    }
+  }
+}
+
 const string Player::getName() const { return name; }
 
 void Player::turn() {
@@ -93,8 +122,8 @@ void Player::turn() {
     c = getchar();
     system("stty cooked");
     cout << endl;
-    if(c != 'o' && c != 'k' && c != 'l' && c != 'm' && c != 'h' && c != 'q' && c!='i' && c!='w' && c!='c')
-      cout << RED << "Wrong command, try again : k(left), o(up), l(down), m(right),i(list_of_item),w(your Weapon),c(change weapon),h(help), q(quit)\n" << RESET;
+    if(c != 'o' && c != 'k' && c != 'l' && c != 'm' && c != 'h' && c != 'q' && c!='i' && c!='w' && c!='c' && c!='a' && c!='p')
+      cout << RED << "Wrong command, try again : k(left), o(up), l(down), m(right), i(list_of_item), w(your Weapon), c(change weapon), alphabet(a), use potion stored in the bag(p), h(help), q(quit)\n" << RESET;
     else
       b = true;
     if(c == 'h'){
@@ -106,13 +135,30 @@ void Player::turn() {
       cout << "\'q\' - quit " << endl;
       cout << "\'i\' - list of your Item " << endl;
       cout << "\'w\' - your Weapon " << endl;
+      cout << "\'a\' - show the alaphabet " << endl;
       cout << "\'c\' - change your Weapon " << endl;
+      cout << "\'p\' - use a potion store in the bag " << endl;
     }
     else if (c=='i')
       lookbag();
     else if (c=='c')
       change_Weapon();
-    else if (c=='w')
+    else if (c=='p')
+      usePotionFromBag();
+    else if (c=='a'){
+      cout <<BOLDWHITE << "ALPHABET"<<RESET<<endl;
+      cout << "# - wall" <<endl<<". - empty"<<endl<<"X - source"<<endl;
+      cout <<"</>/^/v - player"<<endl<<"H - healing potion"<<endl;
+      cout <<"h - posion"<<endl<<"R - potion resi up"<<endl;
+      cout <<"r - potion resi down"<<endl<<"? - unknown object"<<endl;
+      cout<<"m - monster"<<endl<<"M - monster2"<<endl;
+      cout <<"w - warrior"<<endl<<"W - warrior2"<<endl;
+      cout<<"n - ninja"<<endl<<"N - ninja2"<<endl;
+      cout<<"c - cavalier"<<endl<<"C - cavalier2"<<endl;
+      cout <<"j - shuriken"<<endl<<"s - sword"<<endl;
+      cout <<"S - sword2"<<endl<<"U - stairs up"<<endl;
+      cout<<"D - stairs down"<<endl<<"z - magician"<<endl<<"Z - magician2"<<endl;
+    }else if (c=='w')
       cout << RED << "the weapon you use is: "<<getWeapon().getName()<<RESET<<endl;
     else if(c == 'q')
       exit(0);
@@ -266,10 +312,14 @@ void Player::use(Potion &p){
       life -= p.getEffect();
     cout << "Your drunk posion, not potion ... Now " << getName() << " have "
 	 <<getLife()<<" hp" << endl;
-  }else if(p.typeOf() == RESI_UP)
+  }else if(p.typeOf() == RESI_UP){
     resi += (double)p.getEffect();
-  else if(p.typeOf() == RESI_DOWN)
+    cout << "You drunk ResiUp, now your resi :"<<resi<<endl;
+  }
+  else if(p.typeOf() == RESI_DOWN){
     resi -= (double)p.getEffect();
+    cout << "You drunk ResiDown, now your resi :"<<resi<<endl;
+  }
   else if(p.typeOf() == HEALING){
     if(life + p.getEffect() > MAX_LIFE)
       life = MAX_LIFE;
