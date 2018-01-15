@@ -6,7 +6,7 @@
 
 #define MAX_LIFE 50
 #define MAX_LIFE2 100
-#define MAX_LIFE_PLAYER 500
+#define MAX_LIFE_PLAYER 5000
 #define DEFAULT_WEAPON Weapon(5,-1,1,'?',"Hands",0)
 #define DEFAULT_WEAPON2 Weapon(10,-1,1,'?',"Hands2",0)
 

@@ -114,12 +114,10 @@ Ninja::~Ninja(){}
 const string Ninja::getName() const{ return string("Ninja"); }
 
 void Ninja::move(){
-  int a,b;
   int n = getFloor()->getN();
   int m = getFloor()->getM();
   int i = getI();
   int j = getJ();
-  bool bb = false;
 
   for(int x = i-visual_area; x <= i+visual_area; x++){
     for(int y = j-(visual_area-abs(i-x)); y <= j+(visual_area-abs(i-x)); y++){
@@ -132,7 +130,8 @@ void Ninja::move(){
       }
     }
   }
-
+  bool bb = false;
+  int a,b;
   do{
     a=rand()%(2*SCOPE_NINJA)+i-SCOPE_NINJA;
     b=rand()%(2*SCOPE_NINJA)+j-SCOPE_NINJA;
