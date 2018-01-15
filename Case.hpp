@@ -26,6 +26,8 @@
 #define BOLDWHITE "\033[1m\033[37m"
 #define RESET "\033[0m"
 
+#define STAIRS_UP -3
+#define STAIRS_DOWN -2
 #define EMPTY -1
 #define WALL 0
 #define SOURCE 1
@@ -79,6 +81,12 @@ public:
 
 };
 
+//A space case (outside a room)
+class Space : public Case {
+public:
+  Space(Floor *f = NULL, int i = -1, int j = -1);
+};
+
 //An empty case (inside a room)
 class Empty : public Case {
 public:
@@ -91,6 +99,22 @@ public:
   Wall(Floor *f = NULL, int i = -1, int j = -1);
   virtual~Wall();
   int typeOf() const;
+};
+
+class StairsUp : public Case{
+public:
+  StairsUp(Floor *f = NULL, int i = -1, int j = -1);
+  
+  int typeOf() const;
+void print() const;
+};
+
+class StairsDown : public Case{
+public:
+  StairsDown(Floor *f = NULL, int i = -1, int j = -1);
+  
+  int typeOf() const;
+void print() const;
 };
 
 //A source where the player can heal

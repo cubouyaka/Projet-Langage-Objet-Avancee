@@ -13,18 +13,14 @@ Game::~Game()
 void Game::setFloor(int n, Floor* f){ floors[n] = f; }
 
 void Game::play(){
-  floors[i_current_floor]->turn();
-  cout << "------------------------------------------------"<<endl;
-  nb_tours++;
+  while(true){
+    nb_tours++;
+    cout << "------------TOUR N°"<<nb_tours<<"----------------"<<endl;
+    floors[i_current_floor]->turn();
+  }
 }
-void Game::Loadfile(string fichier)
-{
-  int n=0,m=0;
-  int i=0;
-  ifstream file(fichier.c_str(), ios::in);  // on ouvre en lecture
-  if(file)  // si l'ouverture a fonctionné
-    {
 
+<<<<<<< HEAD
       string contenu;  // déclaration d'une chaîne qui contiendra la ligne lue
       // on met dans "contenu" la ligne
       while(getline(file, contenu)){
@@ -107,3 +103,6 @@ void Game::Loadfile(string fichier)
   else
     cerr << "Impossible d'ouvrir le fichier !" << endl;
 }
+=======
+Floor * Game::getFloor(int n){ return floors[n]; }
+>>>>>>> 4532c0b842f42a763c4e286ecdf1026d47b6e54f

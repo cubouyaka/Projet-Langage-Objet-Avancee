@@ -99,10 +99,15 @@ void Warrior::move(){
 Warrior2::Warrior2(int i, int j, int l, const double r,char c, const int s,
 		   int va, const Weapon w, const Item it) :
   Warrior(i,j,l,r,c,s,va,w,it){}
+<<<<<<< HEAD
 Warrior2::~Warrior2(){}
 void Warrior2::print() const {
   cout << BOLDRED <<  symbole << RESET;
 }
+=======
+
+void Warrior2::print() const { cout << BOLDRED <<  symbole << RESET;}
+>>>>>>> 4532c0b842f42a763c4e286ecdf1026d47b6e54f
 
 const string Warrior2::getName() const{ return string("Warrior2"); }
 
@@ -126,7 +131,7 @@ Ninja2::Ninja2(int i, int j, int l, const double r,char c, const int s, int va,
 	       const Weapon w, const Item it) : Ninja(i,j,l,r,c,s,va,w,it){}
  Ninja2::~Ninja2(){}
 
-void Ninja2::print() const { cout << BOLDRED << symbole << RESET << endl;}
+void Ninja2::print() const { cout << BOLDRED << symbole << RESET;}
 
 //CAVALIER
 Cavalier::Cavalier(int i, int j, int l, const double r, char c, const int s,
@@ -218,7 +223,7 @@ Cavalier2::Cavalier2(int i, int j, int l, const double r, char c, const int s,
   : Cavalier(i,j,l,r,c,s,va,w,it){}
 	Cavalier2::~Cavalier2(){}
 
-void Cavalier2::print() const { cout << BOLDRED << symbole << RESET << endl;}
+void Cavalier2::print() const { cout << BOLDRED << symbole << RESET;}
 
 //MAGICIAN
 Magician::Magician(int i, int j, int l, const double r, char c, const int s,
@@ -229,5 +234,11 @@ Magician::~Magician(){}
 Magician2::Magician2(int i, int j, int l, const double r, char c, const int s,
 		     int va, const Weapon w, const Item it) :
   Magician(i,j,l,r,c,s,va,w,it){}
+<<<<<<< HEAD
 Magician2::~Magician2(){}
 void Magician2::print() const { cout <<BOLDRED << symbole << RESET << endl;}
+=======
+
+void Magician2::print() const { cout <<BOLDRED << symbole << RESET;}
+
+>>>>>>> 4532c0b842f42a763c4e286ecdf1026d47b6e54f

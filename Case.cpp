@@ -26,10 +26,27 @@ void Case::print() const{ cout << symbole; }
 int Case::typeOf() const{ return EMPTY; }
 
 Empty::Empty(Floor * floor, int i, int j) : Case('.',floor,i,j) {}
+<<<<<<< HEAD
 Empty::~Empty(){}
 Wall::Wall(Floor * floor, int i, int j) : Case('#',floor,i,j) {}
 int Wall::typeOf() const{ return WALL; }
 Wall::~Wall(){};
+=======
+
+Space::Space(Floor * floor, int i, int j) : Case(' ',floor,i,j) {}
+
+Wall::Wall(Floor * floor, int i, int j) : Case('#',floor,i,j) {}
+int Wall::typeOf() const{ return WALL; }
+
+StairsUp::StairsUp(Floor * floor, int i, int j) : Case('U',floor,i,j) {}
+int StairsUp::typeOf() const{ return STAIRS_UP; }
+void StairsUp::print() const{ cout << BOLDYELLOW << symbole << RESET;}
+
+StairsDown::StairsDown(Floor * floor, int i, int j) : Case('D',floor,i,j) {}
+int StairsDown::typeOf() const{ return STAIRS_DOWN; }
+void StairsDown::print() const{ cout << BOLDYELLOW << symbole << RESET;}
+
+>>>>>>> 4532c0b842f42a763c4e286ecdf1026d47b6e54f
 Source::Source(Floor * floor, int i, int j) : Case('X',floor,i,j){}
 Source::~Source(){}
 int Source::typeOf() const{ return SOURCE; }
