@@ -18,7 +18,9 @@ void Game::play(){
   floors[i_current_floor]->print();
   while(true){
     nb_tours++;
-    cout << "------------TOUR N°"<<nb_tours<<"----------------"<<endl;
+    cout<< BOLDWHITE << "------------TOUR N°"<<nb_tours<<"--------------"<<endl;
+    cout <<player->getName()<<" - HP :"<<player->getLife()<<"("<<MAX_LIFE_PLAYER
+	 <<"), current Floor number " << i_current_floor<< RESET<<endl;
     floors[i_current_floor]->turn();
     floors[i_current_floor]->print();
   }

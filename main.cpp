@@ -131,7 +131,8 @@ ifstream file(fichier.c_str(), ios::in);  // on ouvre en lecture
 	    Warrior2 *warrior2 = new Warrior2(i,j);
 	    floors[k]->setBoard(i,j,warrior2);
 	    warrior2->setFloor(floors[k]);
-	  }
+	  }else
+	    floors[k]->setBoard(i,j,space);
 	}
 	i++;
       }
