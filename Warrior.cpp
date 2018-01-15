@@ -113,13 +113,40 @@ Ninja::Ninja(int i, int j, int l, const double r,char c, const int s,
 Ninja::~Ninja(){}
 const string Ninja::getName() const{ return string("Ninja"); }
 
-void Ninja::teleportation(){
-  srand(time(NULL));
-  int a=rand()%10;
-  int b=rand()%10;
-  i=a;
-  j=b;
-  //TODO..
+void Ninja::move(){
+  int a,b;
+  int n = getFloor()->getN();
+  int m = getFloor()->getM();
+  int i = getI();
+  int j = getJ();
+  bool bb = false;
+
+  for(int x = i-visual_area; x <= i+visual_area; x++){
+    for(int y = j-(visual_area-abs(i-x)); y <= j+(visual_area-abs(i-x)); y++){
+      if(0 <= x && x < n && 0 <= y && y < m){
+	if(getFloor()->getCase(x,y)->typeOf() == PLAYER){
+	  attack((People &)(*getFloor()->getCase(x,y)));
+	  setPlayed(true);
+	  return;
+	}
+      }
+    }
+  }
+
+  do{
+    a=rand()%(2*SCOPE_NINJA)+i-SCOPE_NINJA;
+    b=rand()%(2*SCOPE_NINJA)+j-SCOPE_NINJA;
+    if(0 <= a && a < n && 0 <= b && b < m)
+      if(getFloor()->getCase(a,b)->typeOf() == EMPTY)
+	bb=true;
+  }while(!bb && emptyAround(i,j));
+  if(bb){
+    floor->setBoard(a,b,this);
+    floor->setBoard(getI(),getJ());
+    setI(a);
+    setJ(b);
+    setPlayed(true);
+  }
 }
 
 Ninja2::Ninja2(int i, int j, int l, const double r,char c, const int s, int va,
@@ -135,6 +162,7 @@ Cavalier::Cavalier(int i, int j, int l, const double r, char c, const int s,
 		   int va, const Weapon w, const Item it)
   : Warrior(i,j,l,r,c,s,va,w,it){}
 Cavalier::~Cavalier(){}
+const string Cavalier::getName() const{ return string("Cavalier"); }
 void Cavalier::move(){
   int i = getI();
   int j = getJ();
@@ -221,17 +249,45 @@ Cavalier2::Cavalier2(int i, int j, int l, const double r, char c, const int s,
 	Cavalier2::~Cavalier2(){}
 
 void Cavalier2::print() const { cout << BOLDRED << symbole << RESET;}
+const string Cavalier2::getName() const{ return string("Cavalier2"); }
 
 //MAGICIAN
 Magician::Magician(int i, int j, int l, const double r, char c, const int s,
 		   int va, const Weapon w, const Item it) :
   Warrior(i,j,l,r,c,s,va,w,it){}
 Magician::~Magician(){}
+
+const string Magician::getName() const{ return string("Magician"); }
+
+void Magician::move(){
+  int i = getI();
+  int j = getJ();
+  int n = getFloor()->getN();
+  int m = getFloor()->getM();
+  int xx,yy;
+  int ii = i, jj = j;
+  bool b = false;
+
+  for(int x = i-visual_area; x <= i+visual_area; x++){
+    for(int y = j-(visual_area-abs(i-x)); y <= j+(visual_area-abs(i-x)); y++){
+      if(0 <= x && x < n && 0 <= y && y < m){
+	if(getFloor()->getCase(x,y)->typeOf() == PLAYER){
+	  attack((People &)(*getFloor()->getCase(x,y)));
+	  setPlayed(true);
+	  return;
+	}
+      }
+    }
+  }
+  Monster::move();
+}
+
+
 //MAGICIAN2
 Magician2::Magician2(int i, int j, int l, const double r, char c, const int s,
 		     int va, const Weapon w, const Item it) :
   Magician(i,j,l,r,c,s,va,w,it){}
 Magician2::~Magician2(){}
+const string Magician2::getName() const{ return string("Magician2"); }
 
-
-void Magician2::print() const { cout <<BOLDRED << symbole << RESET;}
+void Magician2::print() const { cout << BOLDRED << symbole << RESET;}

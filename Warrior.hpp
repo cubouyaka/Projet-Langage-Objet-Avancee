@@ -44,7 +44,7 @@ public:
 	char c = 'n', const int s = 1, int va = SCOPE_NINJA,
 	const Weapon w = SHURIKEN, const Item it = Item());
   virtual~Ninja();
-  void teleportation() ;
+  void move() ;
   virtual const string getName() const;
 };
 
@@ -66,6 +66,7 @@ public:
 	     char c = 'c', const int s = 2, int va = SCOPE_CAVA,
 	     const Weapon w = SWORD, const Item it = Item());
 virtual~Cavalier();
+  const string getName() const;
 void move();
 };
 
@@ -76,6 +77,7 @@ public:
 	     char c = 'C', const int s = 2, int va = SCOPE_CAVA2,
 	     const Weapon w = SWORD2, const Item it = Item());
        virtual~Cavalier2();
+  const string getName() const;
 void print() const;
 };
 
@@ -83,18 +85,21 @@ void print() const;
 class Magician : public Warrior{
 public:
   Magician(int i = -1, int j = -1, int l = MAX_LIFE, const double r = 2,
-	     char c = 'm', const int s = 2, int va = SCOPE_MAGICIAN,
-	     const Weapon w = SCEPTER, const Item it = Item());
+	     char c = 'z', const int s = 2, int va = SCOPE_MAGICIAN,
+	     const Weapon w = FIREBALL, const Item it = Item());
   virtual~Magician();
+  const string getName() const;
+  virtual void move();
 };
 
 //Class Magician2
 class Magician2 : public Magician{
 public:
   Magician2(int i = -1, int j = -1, int l = MAX_LIFE2, const double r = 2,
-	      char c = 'M', const int s = 2, int va = SCOPE_MAGICIAN2,
-	      const Weapon w = SCEPTER2, const Item it = Item());
+	      char c = 'Z', const int s = 2, int va = SCOPE_MAGICIAN2,
+	      const Weapon w = FIREBALL2, const Item it = Item());
   virtual~Magician2();
+  const string getName() const;
   void print() const;
 };
 

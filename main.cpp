@@ -200,26 +200,26 @@ ifstream file(fichier.c_str(), ios::in);  // on ouvre en lecture
 
       floors[k] = new Floor(n,m);
       game.setFloor(k,floors[k]);
-      Wall wall;
-      Source source;
-      Space space;
-      StairsUp s_up;
-      StairsDown s_down;
+      Wall *wall = new Wall();
+      Source *source = new Source();
+      Space *space = new Space();
+      StairsUp *s_up = new StairsUp();
+      StairsDown *s_down = new StairsDown();
       while(i<n){
 	getline(file, contenu);
 	for(int j=0; j<m; j++){
 	  if(contenu[j]==' ')
-	    floors[k]->setBoard(i,j,&space);
+	    floors[k]->setBoard(i,j,space);
 	  if(contenu[j]=='.')
 	    floors[k]->setBoard(i,j);
 	  else if(contenu[j]=='X')
-	    floors[k]->setBoard(i,j,&source);
+	    floors[k]->setBoard(i,j,source);
 	  else if(contenu[j]=='#')
-	    floors[k]->setBoard(i,j,&wall);
+	    floors[k]->setBoard(i,j,wall);
 	  else if(contenu[j]=='U')
-	    floors[k]->setBoard(i,j,&s_up);
+	    floors[k]->setBoard(i,j,s_up);
 	  else if(contenu[j]=='D')
-	    floors[k]->setBoard(i,j,&s_down);
+	    floors[k]->setBoard(i,j,s_down);
 	  else if (contenu[j]=='c'){
 	    Cavalier *cav = new Cavalier(i,j);
 	    floors[k]->setBoard(i,j,cav);
@@ -272,6 +272,14 @@ ifstream file(fichier.c_str(), ios::in);  // on ouvre en lecture
 	    Warrior *warrior = new Warrior(i,j);
 	    floors[k]->setBoard(i,j,warrior);
 	    warrior->setFloor(floors[k]);
+	  }else  if (contenu[j]=='z'){
+	    Magician *magician = new Magician(i,j);
+	    floors[k]->setBoard(i,j,magician);
+	    magician->setFloor(floors[k]);
+	  }else  if (contenu[j]=='Z'){
+	    Magician2 *magician2 = new Magician2(i,j);
+	    floors[k]->setBoard(i,j,magician2);
+	    magician2->setFloor(floors[k]);
 	  }else  if (contenu[j]=='W'){
 	    Warrior2 *warrior2 = new Warrior2(i,j);
 	    floors[k]->setBoard(i,j,warrior2);
