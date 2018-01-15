@@ -26,6 +26,7 @@
 #define BOLDWHITE "\033[1m\033[37m"
 #define RESET "\033[0m"
 
+#define SPACE -4
 #define STAIRS_UP -3
 #define STAIRS_DOWN -2
 #define EMPTY -1
@@ -86,6 +87,7 @@ void setFloor(Floor *f);
 class Space : public Case {
 public:
   Space(Floor *f = NULL, int i = -1, int j = -1);
+  int typeOf() const;
 };
 
 //An empty case (inside a room)

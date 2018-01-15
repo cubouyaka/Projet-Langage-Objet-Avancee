@@ -33,6 +33,7 @@ Empty::~Empty(){}
 Wall::~Wall(){};
 
 Space::Space(Floor * floor, int i, int j) : Case(' ',floor,i,j) {}
+int Space::typeOf() const{ return SPACE; }
 
 Wall::Wall(Floor * floor, int i, int j) : Case('#',floor,i,j) {}
 int Wall::typeOf() const{ return WALL; }

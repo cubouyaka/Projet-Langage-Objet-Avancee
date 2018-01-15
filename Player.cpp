@@ -159,7 +159,7 @@ void Player::turn() {
       cout <<"S - sword2"<<endl<<"U - stairs up"<<endl;
       cout<<"D - stairs down"<<endl<<"z - magician"<<endl<<"Z - magician2"<<endl;
     }else if (c=='w')
-      cout << RED << "the weapon you use is: "<<getWeapon().getName()<<RESET<<endl;
+      cout << GREEN << "the weapon you use is: "<<getWeapon().getName()<<RESET<<endl;
     else if(c == 'q')
       exit(0);
     else if(c == 'o' || c == 'k'|| c == 'l'|| c == 'm') //a move
@@ -223,7 +223,7 @@ bool Player::interact(Case & c){
     setFloor(game->getFloor(game->i_current_floor));
     setJ(1);
     setI(1);
-    return true;
+    return false;
   }else if(c.typeOf() == STAIRS_DOWN){
     game->getFloor(game->i_current_floor)->setBoard(getI(),getJ());
     game->setCurrentFloor((game->i_current_floor-1+game->getNbFloor())%game->getNbFloor());
@@ -231,7 +231,7 @@ bool Player::interact(Case & c){
     setFloor(game->getFloor(game->i_current_floor));
     setJ(1);
     setI(1);
-    return true;
+    return false;
   }else if(c.typeOf()==WEAPON){
     return askUseOrStore((Weapon&)c);
   }else if((c.typeOf()%10) == POTION){
