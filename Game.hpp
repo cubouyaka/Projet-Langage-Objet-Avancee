@@ -6,7 +6,6 @@
 #include "Player.hpp"
 #include "Warrior.hpp"
 #include "Wizard.hpp"
-#include "Game.hpp"
 #include "Weapon.hpp"
 #include "Item.hpp"
 #include "Potion.hpp"
@@ -26,6 +25,8 @@ public:
 
   void setFloor(int n, Floor* f);
   Floor * getFloor(int n);
+  void setCurrentFloor(int n);
+  int getNbFloor() const;
   void play();
 };
 

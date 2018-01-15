@@ -52,6 +52,7 @@ public:
 	 char c = 'N', const int s = 1, int va = SCOPE_NINJA2, const Weapon w = SHURIKEN,
 	 const Item it = Item());
   void print() const;
+  const string getName() const;
 };
 
 //Class Cavalier

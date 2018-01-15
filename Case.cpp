@@ -24,6 +24,8 @@ void Case::turn() {}
 void Case::print() const{ cout << symbole; }
 //void Case::interact(Player & p){ cout << p.getName() << endl; }
 int Case::typeOf() const{ return EMPTY; }
+void Case::setFloor(Floor * f){ floor = f; }
+
 
 Empty::Empty(Floor * floor, int i, int j) : Case('.',floor,i,j) {}
 

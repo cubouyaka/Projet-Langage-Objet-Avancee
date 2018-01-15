@@ -21,3 +21,4 @@ const int Weapon::getAttack() const{ return attack; }
 const int Weapon::getScope() const{ return scope; }
 int Weapon::getDurability() const { return durability; }
 bool Weapon::setDurability() const { return ((--durability) == 0); }
+void Weapon::setAttack(int n){ attack = n; }

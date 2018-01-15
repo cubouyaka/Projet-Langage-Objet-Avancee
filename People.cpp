@@ -31,7 +31,12 @@ Weapon People::getWeapon() const { return weapon; }
 Item People::getItem() const { return item; }
 void People::setPlayed(bool b) { played = b; }
 
-void People::setWeapon(Weapon &w) { weapon = w; }
+void People::setWeapon(Weapon &w) { 
+  weapon = w;
+  cout << BOLDGREEN<<"Now you use " << weapon.getName() <<RESET << endl;
+}
+
+void People::setWeapon(int a){  weapon.setAttack(a); }
 
 bool People::attacked(const People &p){
   if(life-p.getWeapon().getAttack()*resi < 0)

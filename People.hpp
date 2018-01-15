@@ -43,6 +43,7 @@ public :
 
   //SETTERS
   void setWeapon(Weapon &w);
+  void setWeapon(int a);
   void setPlayed(bool b);
 
   //METHODS

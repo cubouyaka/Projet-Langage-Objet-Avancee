@@ -85,7 +85,7 @@ void Warrior::move(){
       return;
     }
     else if(getFloor()->getCase(ii,jj)->typeOf() == EMPTY){
-      floor->setBoard(ii,jj,*this);
+      floor->setBoard(ii,jj,this);
       floor->setBoard(getI(),getJ());
       setI(ii);
       setJ(jj);
@@ -124,6 +124,8 @@ Ninja2::Ninja2(int i, int j, int l, const double r,char c, const int s, int va,
 	       const Weapon w, const Item it) : Ninja(i,j,l,r,c,s,va,w,it){}
 
 void Ninja2::print() const { cout << BOLDRED << symbole << RESET;}
+
+const string Ninja2::getName() const{ return string("Ninja2"); }
 
 //CAVALIER
 Cavalier::Cavalier(int i, int j, int l, const double r, char c, const int s,
@@ -199,7 +201,7 @@ void Cavalier::move(){
       return;
     }
     else if(getFloor()->getCase(ii,jj)->typeOf() == EMPTY){
-      floor->setBoard(ii,jj,*this);
+      floor->setBoard(ii,jj,this);
       floor->setBoard(getI(),getJ());
       setI(ii);
       setJ(jj);

@@ -72,6 +72,7 @@ public:
   Floor* getFloor() const;
   virtual bool getPlayed() const;
   virtual void setPlayed(bool b);
+void setFloor(Floor *f);
 
   //METHODS
   virtual void turn();

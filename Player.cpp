@@ -1,8 +1,9 @@
 #include "Player.hpp"
 
-Player::Player(Floor* f, int i, int j, const string n, int l, const double r,
+Player::Player(Game *g, Floor* f, int i, int j, const string n, int l, 
+	       const double r,
 	       const int s, int va, const Weapon w) :
-  People(f,i,j,'>',l,r,s,va,w), name(n){}
+  People(f,i,j,'>',l,r,s,va,w), name(n),game(g){}
 
 void Player::setSymbole(char s){ symbole = s; }
 
@@ -23,10 +24,8 @@ void Player::lookbag()const{
 //methode pour ajouter des elements dans le sac on regardesi le sac n'est pas plein on ajoute sinon on doit supprimer un item
 void Player::Add_item_bag( Item &item){
   char c;
-  if(bag.size()<MAX_ITEM){
+  if(bag.size()<MAX_ITEM)
     bag.push_back(item);
-
-  }
   else{
     cout <<RED<<"Your bag is full remove an item if you want to add it"<<RESET<<endl;
     cout <<RED<<"tape 'y' if you want remove something or other button if not "<<RESET<<endl;
@@ -66,16 +65,22 @@ void Player::change_Weapon(){
   if(bag.size()<=0)
     cout <<"your bag is empty, you can't change your weapon"<<endl;
   else{
-    //cout<<"choice the number of weapon wich you want replace"<<endl;
-    for(int i(0); i<bag.size(); i++){
-      cout <<BOLDCYAN<< bag[i].getName() << "| ";
-      if(bag[i].typeOf()==WEAPON)
-	//TODO 
-	setWeapon((Weapon&)bag[i]);
+    bool b = true;
+    while(b){
+      lookbag();
+      cout << "enter the index of the weapon you want to equip"<<endl;
+      int i;
+      cin >> i;
+      if(i>=0 && i < bag.size() && bag[i].typeOf() != WEAPON)
+	b = false;
+      if(!b){
+	//setWeapon(((Weapon&)bag[i]).getAttack()); //doesnt work yet 
+	cout<<BOLDGREEN<<((Weapon&)bag[i]).getName()<<" equiped."<<RESET<<endl;
+      }
     }
-    cout<<RESET <<endl;
   }
 }
+
 const string Player::getName() const { return name; }
 
 void Player::turn() {
@@ -119,7 +124,7 @@ void Player::move(char c){
   if(c == 'k'){
     if(j > 0){ //not out of bounds
       if(interact(*floor->getCase(i,j-1))){
-	floor->setBoard(i,j-1,*this);
+	floor->setBoard(i,j-1,this);
 	setSymbole('<');
 	floor->setBoard(i,j);
 	setJ(j-1);
@@ -128,7 +133,7 @@ void Player::move(char c){
   }else if( c == 'o'){
     if(i > 0 && floor->getCase(i-1,j)->typeOf() != WALL){
       if(interact(*floor->getCase(i-1,j))){
-	floor->setBoard(i-1,j,*this);
+	floor->setBoard(i-1,j,this);
 	setSymbole('^');
 	floor->setBoard(i,j);
 	setI(i-1);
@@ -137,7 +142,7 @@ void Player::move(char c){
   }else if( c == 'l'){
     if(i < floor->getN()-1){
       if(interact(*floor->getCase(i+1,j))){
-	floor->setBoard(i+1,j,*this);
+	floor->setBoard(i+1,j,this);
 	setSymbole('v');
 	floor->setBoard(i,j);
 	setI(i+1);
@@ -146,7 +151,7 @@ void Player::move(char c){
   }else if(c == 'm'){
     if(j < floor->getM()-1){
       if(interact(*floor->getCase(i,j+1))){
-	floor->setBoard(i,j+1,*this);
+	floor->setBoard(i,j+1,this);
 	setSymbole('>');
 	floor->setBoard(i,j);
 	setJ(j+1);
@@ -163,7 +168,23 @@ bool Player::interact(Case & c){
     return healSource();
   else if(c.typeOf() == ITEM)
     return false;
-  else if(c.typeOf()==WEAPON){
+  else if(c.typeOf() == STAIRS_UP){
+    game->getFloor(game->i_current_floor)->setBoard(getI(),getJ());
+    game->setCurrentFloor((game->i_current_floor+1+game->getNbFloor())%game->getNbFloor());
+    game->getFloor(game->i_current_floor)->setBoard(1,1,this);
+    setFloor(game->getFloor(game->i_current_floor));
+    setJ(1);
+    setI(1);
+    return true;
+  }else if(c.typeOf() == STAIRS_DOWN){
+    game->getFloor(game->i_current_floor)->setBoard(getI(),getJ());
+    game->setCurrentFloor((game->i_current_floor-1+game->getNbFloor())%game->getNbFloor());
+    game->getFloor(game->i_current_floor)->setBoard(1,1,this);
+    setFloor(game->getFloor(game->i_current_floor));
+    setJ(1);
+    setI(1);
+    return true;
+  }else if(c.typeOf()==WEAPON){
     return askUseOrStore((Weapon&)c);
   }else if((c.typeOf()%10) == POTION){
     return askUseOrStore((Potion&)c);
@@ -227,13 +248,9 @@ bool Player::askUseOrStore(Weapon &weapon){
     Add_item_bag(weapon);
   }else if(c == 'n')
     return false;
-  else  {//ces conditions cté just pour tester si le changement de weapon marche
+  else
     if(weapon.typeOf()==WEAPON)
-      {
-	cout << GREEN << "you use " <<weapon.getName()<<" Now"<<RESET << endl;
 	setWeapon((Weapon &)weapon);
-      }
-  }
   return true;
 }
 

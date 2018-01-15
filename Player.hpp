@@ -1,10 +1,12 @@
 #ifndef PLAYER_H
 #define PLAYER_H
-#include "People.hpp"
+#include "Game.hpp"
 #include <vector>
 #include <typeinfo>
 
 #define MAX_ITEM 3
+
+class Game;
 
 class Player : public People {
 private:
@@ -12,9 +14,11 @@ private:
   mutable std::vector<Item> bag;
 
 public:
-  Player(Floor* f = NULL, int i = -1, int j = -1, const string n = "???",
+  Game * game;
+  Player(Game  *g = NULL, Floor* f = NULL, int i = -1, int j = -1, 
+	 const string n = "???",
 	 int l = MAX_LIFE_PLAYER, const double r = 1,const int s = 1,
-	 int va = 5, const Weapon w = DEFAULT_WEAPON);
+	 int va = 5, const Weapon w = SWORD);
 
   void setSymbole(char s);
   const string getName() const;

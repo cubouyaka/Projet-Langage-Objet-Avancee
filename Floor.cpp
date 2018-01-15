@@ -24,19 +24,17 @@ void Floor::setBoard(const int i, const int j,char c) {
     board[i][j] = new Wall(this,i,j);
   //TODO else: out of bounds
 }
-void Floor::setBoard(const int i, const int j, Case &c) {
+void Floor::setBoard(const int i, const int j, Case *c) {
   if(0 <= i && i < n && 0 <= j && j < m)
-    board[i][j] = &c;
+    board[i][j] = c;
   //TODO else: out of bounds
 }
 
 void Floor::turn() {
-  //while(true){
   for(int i = 0; i < n; i++)
     for(int j = 0; j < m; j++)
       if(!board[i][j]->getPlayed()) //if it didn't moved already
 	board[i][j]->turn();
-  print();
   endTurn();
 }
 

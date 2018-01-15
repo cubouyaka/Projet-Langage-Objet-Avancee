@@ -35,6 +35,7 @@ public:
   int getDurability() const;
 
   //SETTERS
+  void setAttack(int n);
   bool setDurability() const; //return true if the durability of the weapon is equal to zero, ie the weapon is over
 
   //METHODS
