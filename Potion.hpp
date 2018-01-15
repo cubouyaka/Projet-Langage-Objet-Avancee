@@ -9,9 +9,9 @@ private:
   const int effect;
 
 public:
-  Potion(const int e = DEFAULT_POTION, const char s = 'P', 
+  Potion(const int e = DEFAULT_POTION, const char s = 'P',
 	 const char * n = "Unknown Potion",Floor* f = NULL);
-
+  virtual~Potion();
   const int getEffect() const;
   virtual void print() const;
   virtual int typeOf() const;

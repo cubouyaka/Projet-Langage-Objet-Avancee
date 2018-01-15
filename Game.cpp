@@ -6,7 +6,10 @@ Game::Game(int nb_f):nb_floor(nb_f){
   i_current_floor = (int)(rand() % nb_floor);
   nb_tours = 0;
 }
-
+Game::~Game()
+{
+  delete[] floors;
+}
 void Game::setFloor(int n, Floor* f){ floors[n] = f; }
 
 void Game::play(){

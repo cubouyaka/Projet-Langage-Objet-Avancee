@@ -9,10 +9,10 @@ protected:
 
 public:
   //CONSTRUCTOR
-  Item(Floor* f = NULL ,char s = '?', string n = "Unknown Item", 
+  Item(Floor* f = NULL ,char s = '?', string n = "Unknown Item",
        int i = -1, int j = -1, const int p = 1);
   Item(const Item &i);
-
+virtual  ~Item();
   //OPERATORS
   Item& operator=(const Item &i);
 

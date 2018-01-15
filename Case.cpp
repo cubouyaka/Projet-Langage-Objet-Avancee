@@ -3,7 +3,7 @@
 Case::Case(char s, Floor *f, int i, int j) : symbole(s), floor(f), i(i), j(j) {}
 Case::Case(const Case &c) : floor(c.getFloor()), symbole(c.getSymbole()),
 			    i(c.getI()), j(c.getJ()) {}
-
+Case::~Case(){}
 Case& Case::operator=(const Case &c){
   i = c.getI();
   j = c.getJ();
@@ -28,6 +28,9 @@ void Case::setFloor(Floor * f){ floor = f; }
 
 
 Empty::Empty(Floor * floor, int i, int j) : Case('.',floor,i,j) {}
+Empty::~Empty(){}
+
+Wall::~Wall(){};
 
 Space::Space(Floor * floor, int i, int j) : Case(' ',floor,i,j) {}
 
@@ -43,5 +46,6 @@ int StairsDown::typeOf() const{ return STAIRS_DOWN; }
 void StairsDown::print() const{ cout << BOLDYELLOW << symbole << RESET;}
 
 Source::Source(Floor * floor, int i, int j) : Case('X',floor,i,j){}
+Source::~Source(){}
 int Source::typeOf() const{ return SOURCE; }
 void Source::print() const{cout << BOLDGREEN << symbole << RESET; }

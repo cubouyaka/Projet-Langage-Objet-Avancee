@@ -5,6 +5,8 @@ Player::Player(Game *g, Floor* f, int i, int j, const string n, int l,
 	       const int s, int va, const Weapon w) :
   People(f,i,j,'>',l,r,s,va,w), name(n),game(g){}
 
+Player::~Player(){}
+
 void Player::setSymbole(char s){ symbole = s; }
 
 void Player::print() const {
@@ -197,7 +199,7 @@ bool Player::interact(Case & c){
 bool Player::healSource(){
   life = MAX_LIFE_PLAYER;
   cout << BOLDGREEN << "Thanks to the source, you get full life ("
-       <<life<<"hp"<<")"<<RESET<<endl;  
+       <<life<<"hp"<<")"<<RESET<<endl;
   return false;
 }
 
@@ -222,7 +224,7 @@ bool Player::askUseOrStore(Potion &potion){
     return false;
   if(c == 's')
     Add_item_bag(potion);
-  else 
+  else
     use(potion);
   return true;
 }

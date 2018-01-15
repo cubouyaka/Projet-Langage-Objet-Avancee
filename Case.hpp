@@ -58,7 +58,7 @@ public:
   //CONSTRUCTORS
   Case(char s = ' ', Floor * f = NULL, int i = -1, int j = -1);
   Case(const Case &c);
-
+  virtual~Case();
   //OPERATORS
   Case& operator=(const Case &c);
 
@@ -92,12 +92,13 @@ public:
 class Empty : public Case {
 public:
   Empty(Floor *f = NULL, int i = -1, int j = -1);
+virtual~Empty();
 };
 
 class Wall : public Case{
 public:
   Wall(Floor *f = NULL, int i = -1, int j = -1);
-  
+  virtual~Wall();
   int typeOf() const;
 };
 
@@ -121,7 +122,7 @@ void print() const;
 class Source : public Case{
 public:
   Source(Floor *f = NULL, int i = -1, int j = -1);
-
+  virtual~Source();
   int typeOf() const;
   void print() const;
 };

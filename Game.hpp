@@ -22,7 +22,7 @@ public:
   int nb_tours;
 
   Game(int nb_f = 1);
-
+  virtual~Game();
   void setFloor(int n, Floor* f);
   Floor * getFloor(int n);
   void setCurrentFloor(int n);

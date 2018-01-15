@@ -9,7 +9,15 @@ Floor::Floor(const int _n, const int _m) : n(_n), m(_m) {
   }
 }
 Floor::Floor(const Floor &f) : n(f.getN()), m(f.getM()), board(f.getBoard()) {}
-
+Floor::~Floor()
+{
+  for(int i = 0; i < n; i++){
+    for(int j = 0; j < m; j++)
+        delete[] board[i][j];
+    delete[] board[i];
+  }
+  delete[] board;
+}
 int Floor::getN() const { return n; }
 int Floor::getM() const { return m; }
 Case*** Floor::getBoard() const { return board; }
