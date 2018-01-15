@@ -321,11 +321,11 @@ void Player::use(Potion &p){
     cout << "You drunk ResiDown, now your resi :"<<resi<<endl;
   }
   else if(p.typeOf() == HEALING){
-    if(life + p.getEffect() > MAX_LIFE)
-      life = MAX_LIFE;
+    if(life + p.getEffect() > MAX_LIFE_PLAYER)
+      life = MAX_LIFE_PLAYER;
     else
       life += p.getEffect();
-    cout << "Healing Potion used. Now " << getName() << " have "
+    cout << "Healing Potion used. Now " << getName() << " has "
 	 <<getLife()<<" hp" << endl;
   }
 }
