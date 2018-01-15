@@ -5,8 +5,8 @@
 //WARRIOR
 Warrior::Warrior(int i, int j, int l, const double r,char c, const int s, int va,
 		 const Weapon w, const Item it) : Monster(i,j,l,r,c,s,va,w,it){}
-
-void Warrior::print() const { 
+Warrior::~Warrior(){}
+void Warrior::print() const {
   cout << RED <<  symbole << RESET;
 }
 
@@ -24,7 +24,7 @@ void Warrior::move(){
   int xx,yy;
   int ii = i, jj = j;
   bool b = false;
-  
+
   for(int x = i-visual_area; x <= i+visual_area; x++){
     for(int y = j-(visual_area-abs(i-x)); y <= j+(visual_area-abs(i-x)); y++){
       if(0 <= x && x < n && 0 <= y && y < m){
@@ -96,11 +96,11 @@ void Warrior::move(){
 }
 
 //WARRIOR2
-Warrior2::Warrior2(int i, int j, int l, const double r,char c, const int s, 
-		   int va, const Weapon w, const Item it) : 
+Warrior2::Warrior2(int i, int j, int l, const double r,char c, const int s,
+		   int va, const Weapon w, const Item it) :
   Warrior(i,j,l,r,c,s,va,w,it){}
-
-void Warrior2::print() const { 
+Warrior2::~Warrior2(){}
+void Warrior2::print() const {
   cout << BOLDRED <<  symbole << RESET;
 }
 
@@ -108,9 +108,9 @@ const string Warrior2::getName() const{ return string("Warrior2"); }
 
 //NINJA
 
-Ninja::Ninja(int i, int j, int l, const double r,char c, const int s, 
+Ninja::Ninja(int i, int j, int l, const double r,char c, const int s,
 	     int va, const Weapon w, const Item it) : Warrior(i,j,l,r,c,s,va,w,it){}
-
+Ninja::~Ninja(){}
 const string Ninja::getName() const{ return string("Ninja"); }
 
 void Ninja::teleportation(){
@@ -124,14 +124,15 @@ void Ninja::teleportation(){
 
 Ninja2::Ninja2(int i, int j, int l, const double r,char c, const int s, int va,
 	       const Weapon w, const Item it) : Ninja(i,j,l,r,c,s,va,w,it){}
+ Ninja2::~Ninja2(){}
 
 void Ninja2::print() const { cout << BOLDRED << symbole << RESET << endl;}
 
 //CAVALIER
 Cavalier::Cavalier(int i, int j, int l, const double r, char c, const int s,
-		   int va, const Weapon w, const Item it) 
+		   int va, const Weapon w, const Item it)
   : Warrior(i,j,l,r,c,s,va,w,it){}
-
+Cavalier::~Cavalier(){}
 void Cavalier::move(){
   int i = getI();
   int j = getJ();
@@ -140,7 +141,7 @@ void Cavalier::move(){
   int xx,yy;
   int ii = i, jj = j;
   bool b = false;
-  
+
   for(int x = i-visual_area; x <= i+visual_area; x++){
     for(int y = j-(visual_area-abs(i-x)); y <= j+(visual_area-abs(i-x)); y++){
       if(0 <= x && x < n && 0 <= y && y < m){
@@ -213,20 +214,20 @@ void Cavalier::move(){
 
 //CAVALIER2
 Cavalier2::Cavalier2(int i, int j, int l, const double r, char c, const int s,
-		     int va, const Weapon w, const Item it) 
+		     int va, const Weapon w, const Item it)
   : Cavalier(i,j,l,r,c,s,va,w,it){}
+	Cavalier2::~Cavalier2(){}
 
 void Cavalier2::print() const { cout << BOLDRED << symbole << RESET << endl;}
 
 //MAGICIAN
-Magician::Magician(int i, int j, int l, const double r, char c, const int s, 
-		   int va, const Weapon w, const Item it) : 
+Magician::Magician(int i, int j, int l, const double r, char c, const int s,
+		   int va, const Weapon w, const Item it) :
   Warrior(i,j,l,r,c,s,va,w,it){}
-
+Magician::~Magician(){}
 //MAGICIAN2
 Magician2::Magician2(int i, int j, int l, const double r, char c, const int s,
-		     int va, const Weapon w, const Item it) : 
+		     int va, const Weapon w, const Item it) :
   Magician(i,j,l,r,c,s,va,w,it){}
-
+Magician2::~Magician2(){}
 void Magician2::print() const { cout <<BOLDRED << symbole << RESET << endl;}
-

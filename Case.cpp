@@ -3,7 +3,7 @@
 Case::Case(char s, Floor *f, int i, int j) : symbole(s), floor(f), i(i), j(j) {}
 Case::Case(const Case &c) : floor(c.getFloor()), symbole(c.getSymbole()),
 			    i(c.getI()), j(c.getJ()) {}
-
+Case::~Case(){}
 Case& Case::operator=(const Case &c){
   i = c.getI();
   j = c.getJ();
@@ -26,10 +26,11 @@ void Case::print() const{ cout << symbole; }
 int Case::typeOf() const{ return EMPTY; }
 
 Empty::Empty(Floor * floor, int i, int j) : Case('.',floor,i,j) {}
-
+Empty::~Empty(){}
 Wall::Wall(Floor * floor, int i, int j) : Case('#',floor,i,j) {}
 int Wall::typeOf() const{ return WALL; }
-
+Wall::~Wall(){};
 Source::Source(Floor * floor, int i, int j) : Case('X',floor,i,j){}
+Source::~Source(){}
 int Source::typeOf() const{ return SOURCE; }
 void Source::print() const{cout << BOLDGREEN << symbole << RESET; }

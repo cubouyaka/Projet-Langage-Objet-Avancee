@@ -17,7 +17,7 @@ public:
   //CONSTRUCTORS
   Floor(const int n = 10, const int m = 10);
   Floor(const Floor &f);
-
+  virtual~Floor();
   //GETTERS
   int getN() const;
   int getM() const;

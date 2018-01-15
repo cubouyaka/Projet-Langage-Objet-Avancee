@@ -2,8 +2,8 @@
 
 Player::Player(Floor* f, int i, int j, const string n, int l, const double r,
 	       const int s, int va, const Weapon w) :
-  People(f,i,j,'>',l,r,s,va,w), name(n){}
-
+People(f,i,j,'>',l,r,s,va,w), name(n){}
+Player::~Player(){}
 void Player::setSymbole(char s){ symbole = s; }
 
 void Player::print() const {
@@ -70,8 +70,7 @@ void Player::change_Weapon(){
     for(int i(0); i<bag.size(); i++){
       cout <<BOLDCYAN<< bag[i].getName() << "| ";
       if(bag[i].typeOf()==WEAPON)
-	//TODO 
-	setWeapon((Weapon&)bag[i]);
+				setWeapon((Weapon&)bag[i]);
     }
     cout<<RESET <<endl;
   }
@@ -176,7 +175,7 @@ bool Player::interact(Case & c){
 bool Player::healSource(){
   life = MAX_LIFE_PLAYER;
   cout << BOLDGREEN << "Thanks to the source, you get full life ("
-       <<life<<"hp"<<")"<<RESET<<endl;  
+       <<life<<"hp"<<")"<<RESET<<endl;
   return false;
 }
 
@@ -201,7 +200,7 @@ bool Player::askUseOrStore(Potion &potion){
     return false;
   if(c == 's')
     Add_item_bag(potion);
-  else 
+  else
     use(potion);
   return true;
 }

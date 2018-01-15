@@ -9,9 +9,7 @@ People::People(const People &p) :
   resi(p.getResi()), size(p.getSize()), visual_area(p.getVArea()),
   weapon(p.getWeapon()),item(p.getItem()) { played = false;}
 
-People::~People(){
-  //TODO ?
-}
+People::~People(){}
 
 People& People::operator=(const People &p){
   life = p.getLife();

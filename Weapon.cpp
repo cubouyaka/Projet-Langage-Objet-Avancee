@@ -7,7 +7,7 @@ Weapon::Weapon(const Weapon &w) : Item(w.getFloor(), w.getSymbole(),w.getName(),
 				       w.getPods()),
 				  attack(w.getAttack()), scope(w.getScope()),
 				  durability(w.getDurability()) {}
-
+Weapon::~Weapon(){}
 Weapon& Weapon::operator=(const Weapon &w){
   Item(w.getFloor(),w.getSymbole(),w.getName(),w.getI(),w.getJ(),w.getPods());
 	attack=w.getAttack();

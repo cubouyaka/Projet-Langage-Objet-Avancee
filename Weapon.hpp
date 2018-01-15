@@ -25,7 +25,7 @@ public:
 	 const int sc = 1, const char s = 'W',
 	 const char * n = "Unknown Weapon", const int p = 5, Floor * f = NULL);
   Weapon(const Weapon &w);
-
+virtual~Weapon();
   //OPERATORS
   Weapon& operator=(const Weapon &w);
 

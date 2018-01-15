@@ -2,9 +2,9 @@
 
 
 Potion::Potion(const int e, const char s, const char* n,Floor * f) : Item(f,s,n),
-								     effect(e){} 
+								     effect(e){}
 const int Potion::getEffect() const { return effect; }
-
+Potion::~Potion(){}
 int Potion::typeOf() const{ return POTION; }
 
 void Potion::print() const {
